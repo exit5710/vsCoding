@@ -14,7 +14,16 @@
 		console.log(item, index);
 	});
 
+	// fruits.forEach((item, index) => console.log(item, index));
+
 	console.log('----------------------------------------');
 
-	fruits.forEach((item, index) => console.log(item, index));
+	const obj = {
+		name: 'kiYoung',
+		test: function () {
+			console.log('1st', this); // this는 obj
+		},
+	};
+
+	obj.test();
 }
