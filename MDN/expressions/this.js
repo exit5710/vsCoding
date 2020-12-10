@@ -11,6 +11,6 @@ let someOne = {
 };
 someOne.fn();
 
-// 버튼을 클릭하여 soneOne이 호출되었기 때문에 this는 버튼이 된다.
+// 버튼을 클릭하여 soneOne.fn이 호출되었기 때문에 this는 버튼이 된다.
 let btn = document.getElementById('btn');
 btn.addEventListener('click', someOne.fn);
