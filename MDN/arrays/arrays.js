@@ -13,17 +13,14 @@
 	fruits.forEach(function (item, index) {
 		console.log(item, index);
 	});
-
 	// fruits.forEach((item, index) => console.log(item, index));
-
 	console.log('----------------------------------------');
 
-	const obj = {
-		name: 'kiYoung',
-		test: function () {
-			console.log('1st', this); // this는 obj
-		},
+	// sort
+	let numbers = [20, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+	let sortFunc = function (a, b) {
+		//console.log('a : ' + a, 'b : ' + b);
+		return a - b;
 	};
-
-	obj.test();
+	console.log(numbers.sort(sortFunc));
 }
