@@ -10,7 +10,7 @@
 
 	// forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void;
 	// value : T (요소(element) : 타입(type))
-	// what is 'thisArg?'?
+	// what is 'thisArg?'? // thisArg는 this
 	// void (리턴 없음)
 	fruits.forEach(function (item, index) {
 		console.log(item, index);
