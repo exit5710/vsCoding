@@ -6,6 +6,8 @@
 	let fruit = fruits[0];
 	console.log(fruit);
 
+	console.log('----------------------------------------');
+
 	// forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void;
 	// value : T (요소(element) : 타입(type))
 	// what is 'thisArg?'?
