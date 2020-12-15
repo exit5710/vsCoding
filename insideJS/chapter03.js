@@ -112,3 +112,6 @@ let verse = 1;
 	console.log(objA.num);
 	console.log(objB.num);
 }
+{
+	console.log('----- ex ' + page + '-' + verse++ + ' -----------------------------------');
+}
