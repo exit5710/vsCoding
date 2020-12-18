@@ -9,7 +9,7 @@ document.body.style.backgroundColor = '#252525';
 const page = 4;
 let verse = 1;
 
-let fn_newline = function () {
+const fn_newline = function () {
 	let example;
 
 	if (verse == 1) {
