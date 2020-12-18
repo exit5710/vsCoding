@@ -10,15 +10,15 @@ const page = 3;
 let verse = 1;
 
 let fn_newline = function () {
-	let ex;
+	let example;
 
 	if (verse == 1) {
-		ex = '----- ex ' + page + '-' + verse++;
+		example = '----- ex ' + page + '-' + verse++;
 	} else {
-		ex = '\n----- ex ' + page + '-' + verse++;
+		example = '\n----- ex ' + page + '-' + verse++;
 	};
 
-	return ex;
+	return example;
 };
 {
 	console.log(fn_newline() + ' -----------------------------------');
@@ -33,6 +33,8 @@ let fn_newline = function () {
 	let emptyLet;
 	let nullLet = null;
 
+	let arr = [];
+	let obj = {};
 	let fn_test = function () { };
 
 	console.log('intNum : ' + typeof intNum);
@@ -42,6 +44,8 @@ let fn_newline = function () {
 	console.log('boolLet : ' + typeof boolLet);
 	console.log('emptyLet : ' + typeof emptyLet);
 	console.log('nullLet : ' + typeof nullLet);
+	console.log('array : ' + typeof arr);
+	console.log('object : ' + typeof obj);
 	console.log('fn_test : ' + typeof fn_test);
 }
 {
@@ -305,8 +309,121 @@ let fn_newline = function () {
 	console.log(arr.length);
 
 	console.log(arr);
+
+	console.log(fn_newline() + ' -----------------------------------');
+	// 21
+	for (let prop in arr) {
+		console.log(prop, arr[prop]);
+	}
+
+	for (let i = 0; i < arr.length; i++) {
+		console.log(i, arr[i]);
+	}
+
+	arr.forEach(function (elements, index) {
+		console.log(index, elements);
+	});
 }
 {
 	console.log(fn_newline() + ' -----------------------------------');
-	// 21
+	// 22
+	let arr = ['zero', 'one', 'two', 'three'];
+	delete arr[2];
+	console.log(arr);
+	console.log(arr.length);
+}
+{
+	console.log(fn_newline() + ' -----------------------------------');
+	// 23
+	let arr = ['zero', 'one', 'two', 'three'];
+	arr.splice(2, 1);
+	console.log(arr);
+	console.log(arr.length);
+}
+{
+	console.log(fn_newline() + ' -----------------------------------');
+	// 24
+	let foo = new Array(3);
+	console.log(foo);
+	console.log(foo.length);
+
+	let bar = new Array(1, 2, 3);
+	console.log(bar);
+	console.log(bar.length);
+}
+{
+	console.log(fn_newline() + ' -----------------------------------');
+	// 25
+	let arr = ['bar'];
+	let obj = {
+		name: 'foo'
+		, length: 1
+	};
+
+	arr.push('baz');
+	console.log(arr);
+
+	console.log(obj);
+	console.log(obj.length);
+	try {
+		obj.push('baz');
+	} catch {
+		console.log('Uncaught TypeError: obj.push is not a function');
+	}
+}
+{
+	console.log(fn_newline() + ' -----------------------------------');
+	// 26
+	let arr = ['bar'];
+	let obj = {
+		name: 'foo'
+		, length: 1
+	};
+
+	arr.push('baz');
+	console.log(arr);
+
+	Array.prototype.push.apply(obj, ['baz']);
+	console.log(obj);
+}
+{
+	console.log(fn_newline() + ' -----------------------------------');
+	// 27
+	let num = 0.5;
+	console.log(num.toExponential(1));
+	console.log('test'.charAt(2));
+}
+{
+	console.log(fn_newline() + ' -----------------------------------');
+	// 28
+	let add1 = 1 + 2;
+	let add2 = 'my ' + 'string';
+	let add3 = 1 + 'string';
+	let add4 = 'string' + 2;
+
+	console.log(add1);
+	console.log(add2);
+	console.log(add3);
+	console.log(add4);
+}
+{
+	console.log(fn_newline() + ' -----------------------------------');
+	// 29
+	console.log(1 == '1');
+	console.log(1 === '1'); // 강력권고
+}
+{
+	console.log(fn_newline() + ' -----------------------------------');
+	// 30
+	// !! boolen 으로 변경
+	console.log(!!0);
+	console.log(!!1);
+	console.log(!!'string');
+	console.log(!!'');
+	console.log(!!true);
+	console.log(!!false);
+	console.log(!!null);
+	console.log(!!undefined);
+	console.log(!!{});
+	console.log(!![1, 2, 3]);
 }
