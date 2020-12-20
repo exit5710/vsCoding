@@ -158,3 +158,7 @@ const fn_newLine = function () {
 	}
 	console.dir(add);
 }
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 13
+}
