@@ -162,3 +162,7 @@ const fn_newLine = function () {
 	console.log(fn_newLine() + ' -----------------------------------');
 	// 13
 }
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 14
+}
