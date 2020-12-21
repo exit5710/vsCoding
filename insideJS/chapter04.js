@@ -184,4 +184,7 @@ const fn_newLine = function () {
 {
 	console.log(fn_newLine() + ' -----------------------------------');
 	// 14
+	window.onload = function () {
+		console.log('loding complete');
+	};
 }
