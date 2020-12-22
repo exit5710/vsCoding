@@ -184,7 +184,86 @@ const fn_newLine = function () {
 {
 	console.log(fn_newLine() + ' -----------------------------------');
 	// 14
+	function myFunction() {
+		return true;
+	}
+
+	console.dir(myFunction.prototype);
+	console.dir(myFunction.prototype.constructor);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 15
 	window.onload = function () {
-		console.log('loding complete');
+		// console.log('This is the callback function.');
 	};
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 16
+	(function (name) {
+		console.log('This is the immediate function -> ' + name);
+	})('foo');
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 17
+	(function (window, undefined) {
+		console.log(window);
+	})(window);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 18
+	function parent() {
+		let a = 100;
+		let b = 200;
+
+		function child() {
+			let b = 300;
+
+			console.log(a);
+			console.log(b);
+		}
+		child();
+	}
+
+	parent();
+	try {
+		child();
+	} catch {
+		console.log('child is not defined');
+	}
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 19
+	function parent() {
+		let a = 100;
+		let child = function () {
+			console.log(a);
+		};
+
+		return child;
+	}
+
+	let inner = parent();
+	inner();
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 20
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 21
+	let self = function () {
+		console.log('a');
+		return function () {
+			console.log('b');
+		};
+	};
+
+	self = self();
+	self();
 }
