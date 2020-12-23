@@ -253,10 +253,6 @@ const fn_newLine = function () {
 {
 	console.log(fn_newLine() + ' -----------------------------------');
 	// 20
-}
-{
-	console.log(fn_newLine() + ' -----------------------------------');
-	// 21
 	let self = function () {
 		console.log('a');
 		return function () {
@@ -266,4 +262,68 @@ const fn_newLine = function () {
 
 	self = self();
 	self();
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 21
+	function func(arg1, arg2) {
+		console.log(arg1, arg2);
+	}
+
+	func();
+	func(1);
+	func(1, 2);
+	func(1, 2, 3);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 22
+	function add(a, b) {
+		console.dir(arguments);
+		return a + b;
+	}
+	console.log(add(1));
+	console.log(add(1, 2));
+	console.log(add(1, 2, 3));
+
+	function sum() {
+		let result = 0;
+
+		for (let i = 0; i < arguments.length; i++) {
+			result += arguments[i];
+		}
+
+		return result;
+	}
+	console.log(sum(1, 2, 3));
+	console.log(sum(1, 2, 3, 4, 5, 6, 7, 8, 9));
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 23
+	let myObject = {
+		name: 'foo'
+		, sayName: function () {
+			console.log(this.name);
+		}
+		, myName: function () {
+			return this.name;
+		}
+	};
+
+	let otherObject = {
+		name: 'bar'
+	};
+
+	myObject.sayName();
+
+	otherObject.sayName = myObject.sayName;
+	otherObject.sayName();
+
+	otherObject.myName = myObject.myName();
+	console.log(otherObject.myName);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 24
 }
