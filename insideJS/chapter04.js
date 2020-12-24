@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 // ------ chapter04 ------------------------------
 document.body.style.margin = 0;
@@ -326,4 +326,51 @@ const fn_newLine = function () {
 {
 	console.log(fn_newLine() + ' -----------------------------------');
 	// 24
+	var foo = 'I\'m foo';
+	console.log(foo);
+	console.log(window.foo);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 25
+	var test = 'This is test';
+	console.log(window.test);
+	console.log(this.test);
+
+	let sayFoo = function () {
+		console.log(this.test);
+	};
+	sayFoo();
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 26
+	var value = 100;
+
+	let myObject = {
+		value: 1,
+		func1: function () {
+			this.value += 1;
+			console.log('func1() called this.value : ' + this.value);
+
+			let func2 = function () {
+				this.value += 1;
+				console.log('func2() called this.value : ' + this.value);
+
+				let func3 = function () {
+					this.value += 1;
+					console.log('func3() called this.value : ' + this.value);
+				};
+				func3();
+			};
+			func2();
+		}
+	};
+
+	myObject.func1();;
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 27
+
 }
