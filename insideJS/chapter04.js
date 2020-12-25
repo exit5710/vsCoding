@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 // ------ chapter04 ------------------------------
 document.body.style.margin = 0;
@@ -338,7 +338,10 @@ const fn_newLine = function () {
 	console.log(this.test);
 
 	let sayFoo = function () {
-		console.log(this.test);
+		try {
+			console.log(this.test);
+		} catch {
+		}
 	};
 	sayFoo();
 }
@@ -367,10 +370,121 @@ const fn_newLine = function () {
 		}
 	};
 
-	myObject.func1();;
+	// myObject.func1();
 }
 {
 	console.log(fn_newLine() + ' -----------------------------------');
 	// 27
+	var value = 100;
 
+	let myObject = {
+		value: 1,
+		func1: function () {
+			let that = this;
+
+			this.value += 1;
+			console.log('func1() called this.value : ' + this.value);
+
+			let func2 = function () {
+				that.value += 1;
+				console.log('func2() called this.value : ' + that.value);
+
+				let func3 = function () {
+					that.value += 1;
+					console.log('func3() called this.value : ' + that.value);
+				};
+				func3();
+			};
+			func2();
+		}
+	};
+
+	myObject.func1();
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 28
+	let Person = function (name) {
+		this.name = name;
+	};
+
+	let foo = new Person('foo');
+	console.log(foo);
+	console.log(foo.name);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 29
+	let foo = {
+		name: 'foo',
+		age: 35,
+		gender: 'man'
+	};
+	console.dir(foo);
+
+	function Person(name, age, gender, position) {
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+	}
+	let bar = new Person('bar', 33, 'woman');
+	console.dir(bar);
+
+	let baz = new Person('baz', 25, 'woman');
+	console.dir(baz);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 30
+	function Person(name, age, gender, position) {
+		// this.name = name;
+		// this.age = age;
+		// this.gender = gender;
+	}
+
+	let qux = Person('quz', 20, 'man');
+	// console.log(qux);
+
+	// console.log(window.name);
+	// console.log(window.age);
+	// console.log(window.gender);
+
+	function A(arg) {
+		if (!(this instanceof A)) {
+			return new A(arg);
+		}
+		this.value = arg ? arg : 0; // 삼항연산자 (true ? 1 : 2) true:1 false:2
+	}
+
+	let a = new A(100);
+	let b = A(10);
+
+	console.log(a.value);
+	console.log(b.value);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 31
+	function Person(name, age, gender) {
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+	}
+
+	let foo = {};
+
+	Person.apply(foo, ['foo', 30, 'man']);
+	console.dir(foo);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 32
+	function myFunction() {
+		console.dir(arguments);
+		// arguments.shift();
+
+		let args = Array.prototype.slice.apply(arguments);
+		console.dir(args);
+	}
+	myFunction(1, 2, 3);
 }
