@@ -488,3 +488,30 @@ const fn_newLine = function () {
 	}
 	myFunction(1, 2, 3);
 }
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 33
+	let arrA = [1, 2, 3];
+	let arrB = arrA.slice(0);
+	let arrC = arrA.slice();
+	let arrD = arrA.slice(1);
+	let arrE = arrA.slice(1, 2);
+
+	console.log(arrB);
+	console.log(arrC);
+	console.log(arrD);
+	console.log(arrE);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 34
+	let noReturnFunc = function () {
+		console.log('This is function has no return statement.');
+	};
+	let result = noReturnFunc();
+	console.log(result);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 35
+}
