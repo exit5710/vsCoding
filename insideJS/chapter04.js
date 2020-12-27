@@ -20,6 +20,12 @@ const fn_newLine = function () {
 
 	return example;
 };
+// note
+/*
+[[Prototype]], prototype프로퍼티 : p88, p121
+
+
+*/
 {
 	console.log(fn_newLine() + ' -----------------------------------');
 	// 1
@@ -514,4 +520,43 @@ const fn_newLine = function () {
 {
 	console.log(fn_newLine() + ' -----------------------------------');
 	// 35
+	function Person(name, age, gender) {
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+
+		return { name: 'bar', age: 20, gender: "woman" };
+	}
+
+	let foo = new Person('foo', 30, 'man');
+	console.log(foo);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 36
+	function Person(name, age, gender) {
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+
+		return 100;
+	}
+
+	let foo = new Person('foo', 30, 'man');
+	console.log(foo);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 37
+	function Person(name) {
+		this.name = name;
+	}
+
+	let foo = new Person('foo');
+	console.dir(Person);
+	console.dir(foo);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 38
 }
