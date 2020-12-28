@@ -23,8 +23,6 @@ const fn_newLine = function () {
 // note
 /*
 [[Prototype]], prototype프로퍼티 : p88, p121
-
-
 */
 {
 	console.log(fn_newLine() + ' -----------------------------------');
@@ -559,4 +557,99 @@ const fn_newLine = function () {
 {
 	console.log(fn_newLine() + ' -----------------------------------');
 	// 38
+	let myObject = {
+		name: 'foo',
+		sayName: function () {
+			console.log('My name is ' + this.name);
+		}
+	};
+
+	myObject.sayName();
+	console.log(myObject.hasOwnProperty('name'));
+	console.log(myObject.hasOwnProperty('nickName'));
+	try {
+		myObject.sayNickName();
+	} catch {
+		console.log('myObject.sayNickName is not a function');
+	}
+	console.log(myObject);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 39
+	function Person(name, age, hobby) {
+		this.name = name;
+		this.age = age;
+		this.hobby = hobby;
+	}
+	let foo = new Person('foo', 30, 'tennis');
+
+	console.log(foo.hasOwnProperty('name'));
+	console.dir(Person.prototype);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 40
+	String.prototype.testMethod = function () {
+		console.log('This is the String.prototype.testMethod()');
+	};
+
+	let str = 'this is test';
+	str.testMethod();
+
+	console.log(String.prototype);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 41
+	function Person(name) {
+		this.name = name;
+	}
+
+	let foo = new Person('foo');
+
+	Person.prototype.sayHello = function () {
+		console.log('Hello');
+	};
+
+	foo.sayHello();
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 42
+	function Person(name) {
+		this.name = name;
+	}
+
+	Person.prototype.getName = function () {
+		return this.name;
+	};
+
+	let foo = new Person('foo');
+	console.log(foo.getName());
+
+	Person.prototype.name = 'person';
+	console.log(Person.prototype.getName());
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 43
+	function Person(name) {
+		this.name = name;
+	}
+	console.log(Person.prototype.constructor);
+
+	let foo = new Person('foo');
+	console.log(foo.country);
+
+	Person.prototype = {
+		country: 'korea'
+	};
+	console.log(Person.prototype.constructor);
+
+	let bar = new Person('bar');
+	console.log(foo.country);
+	console.log(bar.country);
+	console.log(foo.constructor);
+	console.log(bar.constructor);
 }
