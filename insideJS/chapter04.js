@@ -653,3 +653,21 @@ const fn_newLine = function () {
 	console.log(foo.constructor);
 	console.log(bar.constructor);
 }
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 44
+	function Person(name) {
+		this.name = name;
+	}
+
+	Person.prototype.country = 'Korera';
+
+	let foo = new Person('foo');
+	let bar = new Person('bar');
+	console.log(foo.country);
+	console.log(bar.country);
+
+	foo.country = 'USA';
+	console.log(foo.country);
+	console.log(bar.country);
+}
