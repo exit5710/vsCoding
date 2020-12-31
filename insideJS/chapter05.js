@@ -77,3 +77,71 @@ const fn_newLine = function () {
 	console.log(var1);
 	console.log(var2);
 }
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 5
+	let value = 'value1';
+
+	function printFunc() {
+		let value = 'value2';
+
+		function printValue() {
+			return value;
+		}
+
+		console.log(printValue());
+	}
+
+	printFunc();
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 6
+	let value = 'value1';
+
+	function printValue() {
+		return value;
+	}
+
+	function printFunc(func) {
+		let value = 'value2';
+		console.log(func());
+	}
+
+	printFunc(printValue);
+
+	// let y = { x: 5 };
+
+	// function withExamFunc() {
+	// 	let x = 10;
+	// 	let z;
+
+	// 	with (y) {
+	// 		z = function () {
+	// 			console.log(x);
+	// 		};
+	// 	}
+	// 	z();
+	// }
+	// withExamFunc();
+
+	let foo;
+
+	function bar() {
+		console.log('bar and x = ' + x);
+	}
+
+	let x;
+
+	// foo();
+	bar();
+
+	foo = function () {
+		console.log('foo and x = ' + x);
+	};
+	x = 1;
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 7
+}
