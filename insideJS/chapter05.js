@@ -144,4 +144,15 @@ const fn_newLine = function () {
 {
 	console.log(fn_newLine() + ' -----------------------------------');
 	// 7
+	function outerFunc() {
+		let x = 10;
+		let innerFunc = function () {
+			console.log(x);
+		};
+
+		return innerFunc;
+	}
+
+	let inner = outerFunc();
+	inner();
 }
