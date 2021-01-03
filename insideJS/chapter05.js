@@ -172,3 +172,61 @@ const fn_newLine = function () {
 	let exam1 = outerFunc(2, 4);
 	exam1(2);
 }
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 9
+	function HelloFunc() {
+		this.greeting = 'hello';
+	}
+
+	HelloFunc.prototype.call = function (func) {
+		func ? func(this.greeting) : this.func(this.greeting);
+	};
+
+	let userFunc = function (greeting) {
+		console.log(greeting);
+	};
+
+	let objHello = new HelloFunc();
+	objHello.func = userFunc;
+	objHello.call();
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 10
+	function HelloFunc() {
+		console.log('1');
+		this.greeting = 'hello';
+	}
+
+	HelloFunc.prototype.call = function (func) {
+		console.log('5');
+		func ? func(this.greeting) : this.func(this.greeting);
+	};
+
+	let objHello = new HelloFunc();
+
+	function saySomething(obj, methodName, name) {
+		console.log('3');
+		// obj.func
+		return (function (greeting) {
+			console.log('6');
+			return obj[methodName](greeting, name);
+		});
+	}
+
+	function newObj(obj, name) {
+		console.log('2');
+		obj.func = saySomething(this, 'who', name);
+		console.log('4');
+		return obj;
+	}
+
+	newObj.prototype.who = function (greeting, name) {
+		console.log('7');
+		console.log(greeting + ' ' + (name || 'everyone'));
+	};
+
+	let obj1 = new newObj(objHello, 'zzoon');
+	obj1.call();
+}
