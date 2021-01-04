@@ -195,38 +195,65 @@ const fn_newLine = function () {
 	console.log(fn_newLine() + ' -----------------------------------');
 	// 10
 	function HelloFunc() {
-		console.log('1');
+		console.log('1', this);
 		this.greeting = 'hello';
 	}
 
 	HelloFunc.prototype.call = function (func) {
-		console.log('5');
-		func ? func(this.greeting) : this.func(this.greeting);
+		console.log('5', this);
+		func ? func(this.greeting) : this.func(this.greeting); // xx == return obj[methodName](greeting, name); == newObj[who]('hello', 'zzoon'); == zz
 	};
 
 	let objHello = new HelloFunc();
 
 	function saySomething(obj, methodName, name) {
-		console.log('3');
-		// obj.func
-		return (function (greeting) {
-			console.log('6');
-			return obj[methodName](greeting, name);
+		console.log('3', obj);
+		return (function (greeting) { // xx
+			console.log('6', this);
+			return obj[methodName](greeting, name); //obj = newObj
 		});
 	}
 
 	function newObj(obj, name) {
-		console.log('2');
+		console.log('2', obj);
+		// obj = HelloFunc
+		// obj.func = xx
 		obj.func = saySomething(this, 'who', name);
-		console.log('4');
+		console.log('4', this);
 		return obj;
 	}
 
+	// zz
 	newObj.prototype.who = function (greeting, name) {
-		console.log('7');
+		console.log('7', this);
 		console.log(greeting + ' ' + (name || 'everyone'));
 	};
 
 	let obj1 = new newObj(objHello, 'zzoon');
+	// console.log(obj1);
 	obj1.call();
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 11
+	let buffAr = [
+		'I am ',
+		'',
+		'. I live in ',
+		'',
+		'. I\'m ',
+		'',
+		' years old.'
+	];
+
+	function getCompletedStr(name, city, age) {
+		buffAr[1] = name;
+		buffAr[3] = city;
+		buffAr[5] = age;
+
+		return buffAr.join('');
+	}
+
+	let str = getCompletedStr('zzoon', 'seoul', 16);
+	console.log(str);
 }
