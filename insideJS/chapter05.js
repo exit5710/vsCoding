@@ -257,3 +257,93 @@ const fn_newLine = function () {
 	let str = getCompletedStr('zzoon', 'seoul', 16);
 	console.log(str);
 }
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 12
+	let getCompletedStr = (function () {
+		let buffAr = [
+			'I am ',
+			'',
+			'. I live in ',
+			'',
+			'. I\'m ',
+			'',
+			' years old.'
+		];
+
+		return (function (name, city, age) {
+			buffAr[1] = name;
+			buffAr[3] = city;
+			buffAr[5] = age;
+
+			return buffAr.join('');
+		});
+	})();
+
+	let str = getCompletedStr('zzoon', 'seoul', 16);
+	console.log(str);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 13
+	function callLater(obj, a, b) {
+		return (function () {
+			obj['sum'] = a + b;
+			console.log(obj['sum']);
+		});
+	}
+
+	let sumObj = {
+		sum: 0
+	};
+
+	let func = callLater(sumObj, 1, 2);
+	// setTimeout(func, 500);
+	func();
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 14
+	function outerFunc(argNum) {
+		let num = argNum;
+		return function (x) {
+			num += x;
+			console.log('num : ' + num);
+		};
+	}
+
+	let exam = outerFunc(40);
+	exam(5);
+	exam(-10);
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 15
+	function func() {
+		let x = 1;
+		return {
+			func1: function () {
+				console.log(++x);
+			},
+			func2: function () {
+				console.log(-x);
+			}
+		};
+	}
+
+	let exam = func();
+	exam.func1();
+	exam.func2();
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 16
+	function countSeconds(howMany) {
+		for (let i = 1; i <= howMany; i++) {
+			setTimeout(function () {
+				console.log(i);
+			}, i * 1000);
+		}
+	}
+	countSeconds(3);
+}
