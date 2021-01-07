@@ -144,11 +144,18 @@ const fn_newLine = function () {
 	// 5
 	let person = {
 		name: 'foo',
+		age: '',
 		getName: function () {
 			return this.name;
 		},
 		setName: function (name) {
 			this.name = name;
+		},
+		getAge: function () {
+			return this.age;
+		},
+		setAge: function (age) {
+			this.age = age;
 		}
 	};
 
@@ -161,9 +168,78 @@ const fn_newLine = function () {
 
 	let student = createObject(person);
 	student.setName('foo');
-	console.log(student.getName());
+	student.setAge(20);
+	console.log(student.getName(), student.getAge());
 }
 {
 	console.log(fn_newLine() + ' -----------------------------------');
 	// 6
+	let person = {
+		name: 'zzoon',
+		getName: function () {
+			return this.name;
+		},
+		setName: function (name) {
+			this.name = name;
+		}
+	};
+
+	let added = {
+		getAge: function () {
+			return this.age;
+		},
+		setAge: function (age) {
+			this.age = age;
+		}
+	};
+
+	function createObject(o) {
+		function F() {
+		}
+		F.prototype = o;
+		return new F();
+	}
+
+	function extend(obj, prop) {
+		if (!prop) {
+			prop = obj;
+			obj = this;
+		}
+
+		for (let i in prop) {
+			obj[i] = prop[i];
+		}
+
+		return obj;
+	}
+
+	let student = createObject(person);
+	extend(student, added);
+	student.setAge(25);
+	console.log(student.getAge());
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 7
+	function Person(name) {
+		this.name = name;
+	}
+
+	Person.prototype.getName = function () {
+		return this.name;
+	};
+
+	Person.prototype.setName = function (name) {
+		this.name = name;
+	};
+
+	function Student() {
+	}
+
+	let foo = new Person('foo');
+	Student.prototype = foo;
+
+	let bar = new Student();
+	bar.setName('bar');
+	console.log(bar.getName());
 }
