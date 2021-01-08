@@ -233,13 +233,18 @@ const fn_newLine = function () {
 		this.name = name;
 	};
 
-	function Student() {
+	function Student(name) {
+		Person.apply(this, arguments);
 	}
 
 	let foo = new Person('foo');
 	Student.prototype = foo;
 
-	let bar = new Student();
+	let bar = new Student('bar');
 	bar.setName('bar');
 	console.log(bar.getName());
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 8
 }
