@@ -247,4 +247,34 @@ const fn_newLine = function () {
 {
 	console.log(fn_newLine() + ' -----------------------------------');
 	// 8
+	function Person(name) {
+		this.name = name;
+	}
+
+	Function.prototype.method = function (name, func) {
+		this.prototype[name] = func;
+	};
+
+	Person.method('getName', function () {
+		return this.name;
+	});
+
+	Person.method('setName', function (name) {
+		this.name = name;
+	});
+
+	function Student() {
+	}
+
+	function F() {
+	}
+
+	F.prototype = Person.prototype;
+	Student.prototype = new F();
+	Student.prototype.constructor = Student;
+	Student.super = Person.prototype;
+
+	let me = new Student();
+	me.setName('foo');
+	console.log(me.getName());
 }
