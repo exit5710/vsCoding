@@ -278,3 +278,24 @@ const fn_newLine = function () {
 	me.setName('foo');
 	console.log(me.getName());
 }
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 9
+	let Person = function (arg) {
+		let name = arg ? arg : 'foo';
+
+		this.getName = function () {
+			return name;
+		};
+
+		this.setName = function (arg) {
+			name = arg;
+		};
+	};
+
+	let me = new Person();
+	console.log(me.getName());
+
+	me.setName('bar');
+	console.log(me.getName());
+}
