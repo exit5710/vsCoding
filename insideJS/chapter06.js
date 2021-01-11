@@ -299,3 +299,67 @@ const fn_newLine = function () {
 	me.setName('bar');
 	console.log(me.getName());
 }
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 10
+	let Person = function (arg) {
+		let name = arg ? arg : 'foo';
+
+		return {
+			getName: function () {
+				return name;
+			},
+			setName: function (arg) {
+				name = arg;
+			}
+		};
+	};
+
+	let me = new Person();
+	console.log(me.getName());
+
+	me.setName('bar');
+	console.log(me.getName());
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 11
+	let ArrCreate = function () {
+		let arr = [1, 2, 3];
+
+		return {
+			getArr: function () {
+				return arr;
+			}
+		};
+	};
+
+	let obj = new ArrCreate();
+	let arr = obj.getArr();
+	arr.push(5);
+	console.log(obj.getArr());
+}
+{
+	console.log(fn_newLine() + ' -----------------------------------');
+	// 12
+	let Person = function (arg) {
+		let name = arg ? arg : 'foo';
+
+		let Func = function () {
+		};
+
+		Func.prototype = {
+			getName: function () {
+				return name;
+			},
+			setName: function (arg) {
+				name = arg;
+			}
+		};
+
+		return Func;
+	}();
+
+	let me = new Person();
+	console.log(me.getName());
+}
