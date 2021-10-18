@@ -363,3 +363,64 @@ const fn_newLine = function () {
 	let me = new Person();
 	console.log(me.getName());
 }
+{
+	console.log(fn_newLine() + fn_newLine() + ' -----------------------------------');
+	// 13, 14
+	function subClass(obj) {
+		let parent = this === window ? Function : this;
+		let F = function () {
+		};
+
+		let child = function () {
+			let _parent = child.parent;
+
+			if (_parent && _parent !== Function) {
+				_parent.apply(this, arguments);
+			}
+
+			if (child.prototype._init) {
+				child.prototype._init.apply(this, arguments);
+			}
+		};
+
+		F.prototype = parent.prototype;
+		child.prototype = new F();
+		child.prototype.constructor = child;
+		child.parent = parent;
+		child.subClass = arguments.callee;
+
+		for (let i in obj) {
+			if (obj.hasOwnProperty(i)) {
+				child.prototype[i] = obj[i];
+			}
+		}
+
+		return child;
+	}
+
+	let person_obj = {
+		_init: function () {
+			console.log('person init');
+		},
+		getName: function () {
+			return this._name;
+		},
+		setName: function (name) {
+			this._name = name;
+		}
+	};
+
+	let student_obj = {
+		_init: function () {
+			console.log('student init');
+		},
+		getName: function () {
+			return 'student name : ' + this._name;
+		}
+	};
+
+	// let Person = subClass(person_obj);
+	// let person = new Person();
+	// person.setName('foo');
+	// console.log(person.getName());
+}
