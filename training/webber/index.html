@@ -7,10 +7,197 @@
 	<title>webber</title>
 	<link rel="icon" href="./../../icon/html5.ico" />
 	<link rel="stylesheet" type="text/css" href="" />
+	<style type="text/css">
+		body {
+			background-color: #333333;
+			color: white;
+		}
+
+		h1 {
+			font-size: 40px;
+			font-weight: normal;
+			color: violet;
+		}
+
+		p {
+			color: red;
+		}
+
+		div p {
+			color: blue;
+		}
+
+		div div p {
+			color: white;
+		}
+
+		.hello {
+			color: red;
+		}
+
+		.example {
+			color: blue;
+		}
+
+		.example-fruit {
+			font-weight: bold;
+			font-size: 20px;
+		}
+	</style>
 	<script type="text/javascript" defer src=""></script>
 </head>
 
 <body>
+	<h1>HTML과 CSS맛보기</h1>
+	<p>HTML과 CSS를 공부합시다.</p>
+	<div>
+		<h2>HTML</h2>
+		<p>HTML은 어렵지 않아요.</p>
+	</div>
+	<div>
+		<h2>CSS</h2>
+		<p>CSS도 마찬가지이고요.</p>
+	</div>
+	<div>
+		<div>
+			<p>그 치킨의 가격은 <strong>20,000원</strong>이었지만, <em>매우 맛이 없었습니다.</em></p>
+			<p>다음은 소설 <cite>소나기</cite>의 한 부분입니다.</p>
+			<blockquote cite="http://example.com/">
+				<p>'이 바보.'</p>
+				<q>조약돌이 날아왔다. 소년은 저도 모르게 벌떡 일어섰다.</q>
+			</blockquote>
+			<p><q cite="http://html5.clearboth.org/text-level-semantics.html#the-q-element">인용이 아닌 내용에 따옴표를 나타내기 위해 q요소를
+					사용해서는 안됩니다.</q>
+			</p>
+			<p>매일 팔굽혀 펴기는 <del>2회</del> <ins>50회</ins> 실시한다.</p>
+			<br /><br /><br /><br /></br /><br />
+			<h1>목차</h1>
+			<a href="#history">1. 역사</a><br />
+			<a href="#markup">2. 마크업</a><br />
+			<a href="#semantic">3. 시맨틱 웹</a><br />
+			<a href="#http">4. 전송</a><br />
+			<br />
+			<p>
+				이 코드로 페이지 내부 이동을 확인하시려면 사이에 내용이 많아서 브라우저가 스크롤이 되어야 합니다.<br />
+				브라우저에서 보시면 목차아래의 링크들을 클릭 시 스크롤이 자동으로 해당하는 글 위치로 이동하는 것을 확인할 수 있습니다.<br />
+				본문내 이동이 되는 예시 페이지로 HTML5 명세 번역본 페이지에 들어가셔서 목차를 누르면 본문 내에 해당 영역으로 이동하는 것을 알 수 있습니다.<br />
+			</p>
+			<br />
+
+			<h2 id="history">역사 </h2>
+			<p>
+				1980년, 유럽 입자 물리 연구소(CERN)의 계약자였었던 물리학자 팀 버너스리가...
+			</p>
+			<ol>
+				<li>
+					<p>단락</p>
+				</li>
+				<ol start="40">
+					<li>항목</li>
+					<li>항목</li>
+				</ol>
+				<li>
+					<p>항목</p>
+					<ol reversed="reversed">
+						<li>항목</li>
+						<li>항목</li>
+						<li>항목</li>
+					</ol>
+				</li>
+			</ol>
+			<ul>
+				<li>항목</li>
+				<li>항목</li>
+				<li>항목</li>
+			</ul>
+			<dl>
+				<dt>한글</dt>
+				<dd>
+					우리나라 글자의 이름. 1445년에 훈민정음이라는 이름으로 반포되었다.
+				</dd>
+			</dl>
+			<dl>
+				<dt>이름</dt>
+				<dt>Name</dt>
+				<dd>홍길동</dd>
+				<dt>취미</dt>
+				<dt>Hobby</dt>
+				<dd>축구</dd>
+				<dd>Football</dd>
+			</dl>
+			<h1>라면 레시피</h1>
+			<dl>
+				<dt>준비물</dt>
+				<dd>
+					<ul>
+						<li>물 550cc</li>
+						<li>라면봉지</li>
+					</ul>
+				</dd>
+
+				<dt>조리법</dt>
+				<dd>
+					<ol>
+						<li>물을 끓인다.</li>
+						<li>물이 끓으면, 면과 스프를 넣는다.</li>
+						<li>다 익으면 불을 끄고 맛있게 먹는다.</li>
+					</ol>
+				</dd>
+			</dl>
+			<span class="hello">안녕하세요.</span>
+			<div class="example">
+				양파, 당근, 무, 배추, 양상추...
+				<!-- 채소 이름들은 파란(blue) 글씨로만 나타납니다. -->
+			</div>
+
+			<div class="example example-fruit">
+				귤, 사과, 포도, 바나나, 배...
+				<!-- 과일 이름들은 파란(blue) 글씨이면서, 두꺼운(bold) 글씨체로 보여집니다. -->
+			</div>
+
+			<h2 id="markup">마크업 </h2>
+			<h1 style="color:#fff;font-size:2em;">Hello world</h1>
+			<p>
+				HTML 마크업은 HTML 요소(엘리먼트, (Elements)와 ...<br />
+				더 많은 정보를 보시려면 <a href="" title="뉴스 페이지 바로가기">뉴스</a>에서 확인가능합니다.
+			</p>
+
+			<h1>30년의 맛 그대로, 웨버 순대국밥</h1>
+			<!-- 문서의 가장 핵심적이고 상위에 위치하는 제목입니다. -->
+			<dl>
+				<dt>글쓴이 :</dt>
+				<dd>맛집 킬러</dd>
+			</dl>
+
+			<!-- 본문 시작 -->
+			<!-- 헤드라인 요소를 이용해서 문서의 개요를 만듭니다. -->
+			<h2>서론</h2>
+			<p>오늘은 보슬보슬 비가오는 날씨입니다. 이런 날이면 이상하게 진한 순대 국물이 생각이 납니다.</p>
+			<p>마침 친구가 근처 유명한 국밥집이 있다하여 오늘의 맛집, 웨버 순대국밥을 찾아가 보았습니다.</p>
+
+			<h2>식당 내부</h2>
+			<p>이 국밥집은 <strong>30년 동안 이어온 전통</strong> 때문인지, 옛날 시골집 같은 느낌을 줍니다. 노란 방바닥이 시골집의 향수를 자극합니다.</p>
+
+			<h2>메뉴</h2>
+			<ul>
+				<li>순대국밥</li>
+				<li>순대</li>
+			</ul>
+			<p>이 곳의 메뉴는 오직 두 가지입니다. 역시 주인장의 자부심이 느껴지는 메뉴입니다.</p>
+
+			<h2>음식 평가</h2>
+			<h3>외형</h3>
+			<img src="sundaeguk.jpg" alt="갓나온 하얀 순대국밥의 모습" />
+			<p>먼가 담백하게 담긴 순대의 모습이 아주 보기 좋습니다.</p>
+			<h3>맛</h3>
+			<p>머라 표현해야 할까요......</p>
+			<p>마치... <em>걸레 같습니다.</em> 이런 맛은 난생 처음입니다. 먹으면서 몇 번이고 헛구역질을 했습니다.</p>
+
+			<h2>결론</h2>
+			<p>기가 막힙니다. 다신 안온다. 퉷.</p>
+
+		</div>
+	</div>
 </body>
 
 </html>
