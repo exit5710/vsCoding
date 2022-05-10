@@ -112,7 +112,6 @@ document.body.style.backgroundColor = '#252525';
 
 
 
-
 	// sort
 	newLine('sort');
 	const numbers = [20, 5, 9, 2, 3, 6, 10, 4, 1, 8, 7];
