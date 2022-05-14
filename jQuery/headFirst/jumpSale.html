@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>jump for joy sale</title>
+	<link rel="icon" href="../../icon/html5.ico" />
+	<link type="text/css" rel="stylesheet" href="../css/styles.css" />
+	<script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript" src="../js/myScripts.js"></script>
+	<script type="text/javascript">
+		let checkForCode = function () {
+			let discountMsg;
+
+			// $('h2:contains("Jump")').css('color', 'red');
+			if ($.contains(this, document.getElementById('hasDiscount'))) {
+				let discount = getRandom(100);
+				discountMsg = "<p>Your Code: CODE " + discount + "%</p>";
+			} else {
+				discountMsg = "<p>Sorry, no discount this time!</p>";
+			}
+
+			$(this).append(discountMsg);
+
+			$(".guess_box").each(function () {
+				if ($.contains(this, document.getElementById('hasDiscount'))) {
+					$(this).addClass("discount");
+				} else {
+					$(this).addClass("noDiscount");
+				}
+
+				$(this).unbind("click");
+			});
+		};
+
+		let hideCode = function () {
+			let random = getRandom(4);
+
+			$(".guess_box").each(function (index) {
+				if (random == index) {
+					$(this).append("<span id='hasDiscount'></span>");
+
+					return false;
+				}
+			});
+		};
+
+		$(document).ready(function () {
+			hideCode();
+			$(".guess_box").click(checkForCode);
+			$(".guess_box").hover(
+				function () {
+					$(this).addClass("myHover");
+				},
+				function () {
+					$(this).removeClass("myHover");
+				}
+			);
+		});
+	</script>
+</head>
+
+<body>
+	<div id="header">
+		<h2>Jump for Joy Sale</h2>
+	</div>
+	<div id="main">
+		<div class="guess_box"><img src="../images/jumpSale/jump1.jpg" /></div>
+		<div class="guess_box"><img src="../images/jumpSale/jump2.jpg" /></div>
+		<div class="guess_box"><img src="../images/jumpSale/jump3.jpg" /></div>
+		<div class="guess_box"><img src="../images/jumpSale/jump4.jpg" /></div>
+	</div>
+</body>
+
+</html>
