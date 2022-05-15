@@ -3,12 +3,3 @@ function getRandom(number) {
 
 	return randomNumber;
 };
-
-$(".guess_box").hover(
-	function () {
-		alert('a');
-	},
-	function () {
-		alert('b');
-	}
-);
