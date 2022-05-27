@@ -1,0 +1,55 @@
+h3 {
+	display: inline;
+	padding-right: 40px;
+}
+
+#myHand {
+	clear: both;
+	border: 1px solid gray;
+	height: 250px;
+	width: 835px;
+}
+
+#myHand div {
+	float: left;
+}
+
+#controls {
+	clear: both;
+}
+
+#btnDeal {
+	height: 330px;
+	width: 295px;
+}
+
+.currentHand {
+	float: left;
+}
+
+.win {
+	color: green;
+}
+
+.lose {
+	color: red;
+}
+
+#result {
+	display: none;
+	position: absolute;
+	top: 100px;
+	left: 20px;
+}
+
+#result>img {
+	width: 500px;
+	height: 250px;
+}
+
+#btnHit,
+#btnStick,
+#btnRestart {
+	display: none;
+	float: left;
+}
