@@ -186,16 +186,6 @@ let fn_reset = function () {
 	});
 };
 
-let fn_moveMe = function (i, object) {
-	if (faceIdx[i] < 9) {
-		faceIdx[i]++;
-		$(object).animate({ left: "-=367px" }, 500);
-	} else {
-		faceIdx[i] = 0;
-		$(object).animate({ left: "0px" }, 500);
-	}
-};
-
 let fn_head = function () {
 	fn_moveMe(0, this);
 };
@@ -210,6 +200,16 @@ let fn_nose = function () {
 
 let fn_mouth = function () {
 	fn_moveMe(3, this);
+};
+
+let fn_moveMe = function (i, object) {
+	if (faceIdx[i] < 9) {
+		faceIdx[i]++;
+		$(object).animate({ left: "-=367px" }, 500);
+	} else {
+		faceIdx[i] = 0;
+		$(object).animate({ left: "0px" }, 500);
+	}
 };
 
 // ourMenu
