@@ -1,8 +1,6 @@
 // common
 let getRandom = function (number) {
-	let randomNumber = Math.floor(Math.random() * number);
-
-	return randomNumber;
+	return Math.floor(Math.random() * number);
 };
 
 // blackJack
@@ -29,26 +27,26 @@ let deck = [
 
 let useCard = new Array();
 
-let btnDeal = function () {
+let fn_btnDeal = function () {
 	$(this).toggle();
 	$("#btnHit").toggle();
 	$("#btnStick").toggle();
 
-	deal();
+	fn_deal();
 };
 
-let btnHit = function () {
-	hit();
+let fn_btnHit = function () {
+	fn_hit();
 };
 
-let btnStick = function () {
+let fn_btnStick = function () {
 	$("#hdrResult").html("Stick!").attr("class", "win");
 	// $("#result").toggle();
 	$(this).hide();
-	end();
+	fn_end();
 };
 
-let btnRestart = function () {
+let fn_btnRestart = function () {
 	$(this).toggle();
 	$("#result").toggle();
 	$("#myHand").empty();
@@ -63,12 +61,12 @@ let btnRestart = function () {
 	$("#btnDeal").show();
 };
 
-let deal = function () {
-	hit();
-	hit();
+let fn_deal = function () {
+	fn_hit();
+	fn_hit();
 };
 
-let hit = function () {
+let fn_hit = function () {
 	let goodCard = false;
 
 	do {
@@ -105,96 +103,113 @@ let hand = {
 		$("#hdrTotal").html("Total : " + this.currentTotal);
 
 		if (this.currentTotal > 21) {
-			end();
+			fn_end();
 			$("#imgResult").attr("src", "../images/blackJack/x2.png").show();
 			$("#hdrResult").html("BUST").attr("class", "lose");
 		} else if (this.currentTotal == 21) {
-			end();
+			fn_end();
 			$("#imgResult").attr("src", "../images/blackJack/check.png").show();
 			$("#hdrResult").html("Black Jack!").attr("class", "win");
 		} else if (this.currentTotal <= 21 && this.cards.length == 5) {
-			end();
+			fn_end();
 			$("#imgResult").attr("src", "../images/blackJack/check.png").show();
 			$("#hdrResult").html("Black Jack - 5 card trick!").attr("class", "win");;
 		}
 	}
 };
 
-let end = function () {
+let fn_end = function () {
 	$("#result").toggle();
 	$("#btnHit, #btnStick").hide();
 	$("#btnRestart").show();
 };
 
 // monsterMashup
-let lightningOne = function (time) {
+let faceIdx = [0, 0, 0, 0];
+
+let lightningOne;
+let lightningTwo;
+let lightningThree;
+
+let fn_startLightning = function () {
+	lightningOne = setInterval(function () {
+		fn_lightningOne();
+	}, 4000);
+
+	lightningTwo = setInterval(function () {
+		fn_lightningTwo();
+	}, 5000);
+
+	lightningThree = setInterval(function () {
+		fn_lightningThree();
+	}, 7000);
+};
+
+let fn_stopLightning = function () {
+	window.clearInterval(lightningOne);
+	window.clearInterval(lightningTwo);
+	window.clearInterval(lightningThree);
+};
+
+let fn_lightningOne = function () {
 	$("#lightning1").fadeIn(250).fadeOut(250);
-	setTimeout(function () {
-		lightningOne(time);
-	}, time);
 };
 
-let lightningTwo = function (time) {
+let fn_lightningTwo = function () {
 	$("#lightning2").fadeIn(250).fadeOut(250);
-	setTimeout(function () {
-		lightningTwo(time);
-	}, time);
 };
 
-let lightningThree = function (time) {
+let fn_lightningThree = function () {
 	$("#lightning3").fadeIn(250).fadeOut(250);
-	setTimeout(function () {
-		lightningThree(time);
-	}, time);
 };
 
-let headCount = 0;
-let eyesCount = 0;
-let noseCount = 0;
-let mouthCount = 0;
+let fn_randomize = function () {
+	$(".face").each(function (index) {
+		let targetPosition = getRandom(10);
+		let currentPosition = faceIdx[index];
+		faceIdx[index] = targetPosition;
 
-let animate = function (element, left) {
-	$(element).animate({ left: left }, 500);
+		if (targetPosition > currentPosition) {
+			let moveTo = (targetPosition - currentPosition) * 367;
+			$(this).animate({ left: "-=" + moveTo + "px" }, 500);
+		} else if (targetPosition < currentPosition) {
+			let moveTo = (currentPosition - targetPosition) * 367;
+			$(this).animate({ left: "+=" + moveTo + "px" }, 500);
+		}
+	});
 };
 
-let head = function () {
-	if (headCount < 9) {
-		headCount++;
-		animate(this, "-=367px");
+let fn_reset = function () {
+	$(".face").each(function (index) {
+		faceIdx[index] = 0;
+		$(this).animate({ left: "0px" }, 500);
+	});
+};
+
+let fn_moveMe = function (i, object) {
+	if (faceIdx[i] < 9) {
+		faceIdx[i]++;
+		$(object).animate({ left: "-=367px" }, 500);
 	} else {
-		headCount = 0;
-		animate(this, "0px");
+		faceIdx[i] = 0;
+		$(object).animate({ left: "0px" }, 500);
 	}
 };
 
-let eyes = function () {
-	if (eyesCount < 9) {
-		eyesCount++;
-		animate(this, "-=367px");
-	} else {
-		eyesCount = 0;
-		animate(this, "0px");
-	}
+let fn_head = function () {
+	fn_moveMe(0, this);
 };
 
-let nose = function () {
-	if (noseCount < 9) {
-		noseCount++;
-		animate(this, "-=367px");
-	} else {
-		noseCount = 0;
-		animate(this, "0px");
-	}
+let fn_eyes = function () {
+	fn_moveMe(1, this);
 };
 
-let mouth = function () {
-	if (mouthCount < 9) {
-		mouthCount++;
-		animate(this, "-=367px");
-	} else {
-		mouthCount = 0;
-		animate(this, "0px");
-	}
+let fn_nose = function () {
+	fn_moveMe(2, this);
+};
+
+let fn_mouth = function () {
+	fn_moveMe(3, this);
 };
 
 // ourMenu
@@ -202,7 +217,7 @@ let v = false;
 let fish;
 let meat;
 
-let vegOn = function () {
+let fn_vegOn = function () {
 	if (v == false) {
 		v = true;
 		fish = $("li.fish").parent().parent().detach();
@@ -216,7 +231,7 @@ let vegOn = function () {
 	}
 };
 
-let restoreMe = function () {
+let fn_restoreMe = function () {
 	if (v == true) {
 		v = false;
 
@@ -233,22 +248,27 @@ let restoreMe = function () {
 
 $(document).ready(function () {
 	// blackJack
-	$("#btnDeal").click(btnDeal);
-	$("#btnHit").click(btnHit);
-	$("#btnStick").click(btnStick);
-	$("#btnRestart").click(btnRestart);
+	$("#btnDeal").click(fn_btnDeal);
+	$("#btnHit").click(fn_btnHit);
+	$("#btnStick").click(fn_btnStick);
+	$("#btnRestart").click(fn_btnRestart);
 
 	// monsterMashup
-	lightningOne(4000);
-	lightningTwo(5000);
-	lightningThree(7000);
+	if (document.title == "monster mashup") {
+		fn_startLightning();
+		window.onfocus = fn_startLightning;
+		window.onblur = fn_stopLightning;
+	};
 
-	$("#head").click(head);
-	$("#eyes").click(eyes);
-	$("#nose").click(nose);
-	$("#mouth").click(mouth);
+	$("#btnRandom").click(fn_randomize);
+	$("#btnReset").click(fn_reset);
+
+	$("#head").click(fn_head);
+	$("#eyes").click(fn_eyes);
+	$("#nose").click(fn_nose);
+	$("#mouth").click(fn_mouth);
 
 	// ourMenu
-	$("#vegOn").click(vegOn);
-	$("#restoreMe").click(restoreMe);
+	$("#vegOn").click(fn_vegOn);
+	$("#restoreMe").click(fn_restoreMe);
 });

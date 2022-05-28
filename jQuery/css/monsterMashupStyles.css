@@ -8,6 +8,10 @@ p {
 	font-size: 12px;
 }
 
+button {
+	cursor: pointer;
+}
+
 #top {
 	position: absolute;
 	left: 191px;
