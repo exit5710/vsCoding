@@ -1,6 +1,40 @@
 // common
-let getRandom = function (number) {
+const getRandom = function (number) {
 	return Math.floor(Math.random() * number);
+};
+
+const getDate = function () {
+	const date = new Date();
+	let year = date.getFullYear();
+	let month = zeroAdd(date.getMonth() + 1);
+	let day = zeroAdd(date.getDate());
+
+	return year + "-" + month + "-" + day;
+};
+
+const getTime = function (type) {
+	const date = new Date();
+
+	//A.M. Ante meridiem, P.M. Post meridiem
+	let meridiem = "";
+	let hours = date.getHours();
+	let minutes = zeroAdd(date.getMinutes());
+	let seconds = zeroAdd(date.getSeconds());
+
+	if (type == 12) {
+		(hours < 12) ? meridiem = "AM " : meridiem = "PM ";
+		hours = zeroAdd(hours - 12);
+	} else {
+		hours = zeroAdd(hours);
+	}
+
+	return meridiem + hours + ":" + minutes + ":" + seconds;
+};
+
+const zeroAdd = function (number) {
+	number = (number < 10) ? "0" + number : number;
+
+	return number;
 };
 
 // blackJack
@@ -10,7 +44,7 @@ function Card(name, suit, value) {
 	this.value = value;
 };
 
-let deck = [
+const deck = [
 	new Card('Ace', 'Hearts', 11), new Card('Two', 'Hearts', 2), new Card('Three', 'Hearts', 3), new Card('Four', 'Hearts', 4),
 	new Card('Five', 'Hearts', 5), new Card('Six', 'Hearts', 6), new Card('Seven', 'Hearts', 7), new Card('Eight', 'Hearts', 8),
 	new Card('Nine', 'Hearts', 9), new Card('Ten', 'Hearts', 10), new Card('Jack', 'Hearts', 10), new Card('Queen', 'Hearts', 10), new Card('King', 'Hearts', 10),
@@ -25,9 +59,9 @@ let deck = [
 	new Card('Nine', 'Spades', 9), new Card('Ten', 'Spades', 10), new Card('Jack', 'Spades', 10), new Card('Queen', 'Spades', 10), new Card('King', 'Spades', 10)
 ];
 
-let useCard = new Array();
+const useCard = new Array();
 
-let fn_btnDeal = function () {
+const fn_btnDeal = function () {
 	$(this).toggle();
 	$("#btnHit").toggle();
 	$("#btnStick").toggle();
@@ -35,18 +69,18 @@ let fn_btnDeal = function () {
 	fn_deal();
 };
 
-let fn_btnHit = function () {
+const fn_btnHit = function () {
 	fn_hit();
 };
 
-let fn_btnStick = function () {
+const fn_btnStick = function () {
 	$("#hdrResult").html("Stick!").attr("class", "win");
 	// $("#result").toggle();
 	$(this).hide();
 	fn_end();
 };
 
-let fn_btnRestart = function () {
+const fn_btnRestart = function () {
 	$(this).toggle();
 	$("#result").toggle();
 	$("#myHand").empty();
@@ -61,12 +95,12 @@ let fn_btnRestart = function () {
 	$("#btnDeal").show();
 };
 
-let fn_deal = function () {
+const fn_deal = function () {
 	fn_hit();
 	fn_hit();
 };
 
-let fn_hit = function () {
+const fn_hit = function () {
 	let goodCard = false;
 
 	do {
@@ -89,7 +123,7 @@ let fn_hit = function () {
 	hand.sumCardTotal();
 };
 
-let hand = {
+const hand = {
 	cards: new Array(),
 	currentTotal: 0,
 	sumCardTotal: function () {
@@ -118,7 +152,7 @@ let hand = {
 	}
 };
 
-let fn_end = function () {
+const fn_end = function () {
 	$("#result").toggle();
 	$("#btnHit, #btnStick").hide();
 	$("#btnRestart").show();
@@ -131,7 +165,7 @@ let lightningOne;
 let lightningTwo;
 let lightningThree;
 
-let fn_startLightning = function () {
+const fn_startLightning = function () {
 	lightningOne = setInterval(function () {
 		fn_lightningOne();
 	}, 4000);
@@ -145,25 +179,25 @@ let fn_startLightning = function () {
 	}, 7000);
 };
 
-let fn_stopLightning = function () {
+const fn_stopLightning = function () {
 	window.clearInterval(lightningOne);
 	window.clearInterval(lightningTwo);
 	window.clearInterval(lightningThree);
 };
 
-let fn_lightningOne = function () {
+const fn_lightningOne = function () {
 	$("#lightning1").fadeIn(250).fadeOut(250);
 };
 
-let fn_lightningTwo = function () {
+const fn_lightningTwo = function () {
 	$("#lightning2").fadeIn(250).fadeOut(250);
 };
 
-let fn_lightningThree = function () {
+const fn_lightningThree = function () {
 	$("#lightning3").fadeIn(250).fadeOut(250);
 };
 
-let fn_randomize = function () {
+const fn_randomize = function () {
 	$(".face").each(function (index) {
 		let targetPosition = getRandom(10);
 		let currentPosition = faceIdx[index];
@@ -179,30 +213,30 @@ let fn_randomize = function () {
 	});
 };
 
-let fn_reset = function () {
+const fn_reset = function () {
 	$(".face").each(function (index) {
 		faceIdx[index] = 0;
 		$(this).animate({ left: "0px" }, 500);
 	});
 };
 
-let fn_head = function () {
+const fn_head = function () {
 	fn_moveMe(0, this);
 };
 
-let fn_eyes = function () {
+const fn_eyes = function () {
 	fn_moveMe(1, this);
 };
 
-let fn_nose = function () {
+const fn_nose = function () {
 	fn_moveMe(2, this);
 };
 
-let fn_mouth = function () {
+const fn_mouth = function () {
 	fn_moveMe(3, this);
 };
 
-let fn_moveMe = function (i, object) {
+const fn_moveMe = function (i, object) {
 	if (faceIdx[i] < 9) {
 		faceIdx[i]++;
 		$(object).animate({ left: "-=367px" }, 500);
@@ -217,7 +251,7 @@ let v = false;
 let fish;
 let meat;
 
-let fn_vegOn = function () {
+const fn_vegOn = function () {
 	if (v == false) {
 		v = true;
 		fish = $("li.fish").parent().parent().detach();
@@ -231,7 +265,7 @@ let fn_vegOn = function () {
 	}
 };
 
-let fn_restoreMe = function () {
+const fn_restoreMe = function () {
 	if (v == true) {
 		v = false;
 
@@ -246,7 +280,76 @@ let fn_restoreMe = function () {
 	}
 };
 
+// cryptid sighting
+const fn_cryptidSighting = function () {
+	/*
+
+	$("#datepicker").datepicker({
+		showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시
+		, dateFormat: 'yy-mm-dd' //Input Display Format 변경
+		, showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+		, showMonthAfterYear: true //년도 먼저 나오고, 뒤에 월 표시
+		, changeMonth: true //콤보박스에서 월 선택 가능
+		, changeYear: true //콤보박스에서 년 선택 가능
+		, nextText: "다음달"
+		, prevText: "이전달"
+		, buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트
+		, buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+		, yearSuffix: "년&nbsp;&nbsp;" //달력의 년도 부분 뒤에 붙는 텍스트
+		, monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 텍스트
+		, monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 Tooltip 텍스트
+		, dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'] //달력의 요일 부분 텍스트
+		, dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'] //달력의 요일 부분 Tooltip 텍스트
+		, minDate: "-2Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+		, maxDate: "+2Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후) 
+	});
+	//From의 초기값을 오늘 날짜로 설정
+	$('#datepicker').datepicker('setDate', 'today');
+	//To의 초기값을 내일로 설정
+	//$('#datepicker2').datepicker('setDate', '+1D');
+
+	$("#type_select").buttonset();
+
+	$("#slide_dist").slider({
+		value: 0,
+		min: 0,
+		max: 100,
+		step: 5,
+		slide: function (event, ui) {
+			$("#distance").val(ui.value);
+		}
+	});
+	$("#distance").val($("#slide_dist").slider("value"));
+
+	$("#slide_weight").slider({
+		value: 0,
+		min: 0,
+		max: 5000,
+		step: 5,
+		slide: function (event, ui) {
+			$("#weight").val(ui.value);
+		}
+	});
+	$("#weight").val($("#slide_weight").slider("value"));
+
+	$("#slide_height").slider({
+		value: 0,
+		min: 0,
+		max: 20,
+		step: 1,
+		slide: function (event, ui) {
+			$("#height").val(ui.value);
+		}
+	});
+	$("#height").val($("#slide_height").slider("value"));
+
+	*/
+};
+
 $(document).ready(function () {
+	// cryptid sighting
+	fn_cryptidSighting();
+
 	// blackJack
 	$("#btnDeal").click(fn_btnDeal);
 	$("#btnHit").click(fn_btnHit);
@@ -272,3 +375,87 @@ $(document).ready(function () {
 	$("#vegOn").click(fn_vegOn);
 	$("#restoreMe").click(fn_restoreMe);
 });
+
+
+
+
+
+
+// const fn_getXMLRacers = function () {
+// 	const xhr = new XMLHttpRequest();
+// 	xhr.addEventListener("readystatechange", function () {
+// 		if (this.readyState === 4) {
+// 			$("#finishers_m").empty();
+// 			$("#finishers_f").empty();
+// 			$("#finishers_all").empty();
+
+// 			$(this.responseText).find("runner").each(function () {
+// 				let info = "<li>Name: " + $(this).find('fname').text() + " " + $(this).find('lname').text() + ". Time: " + $(this).find('time').text() + "</li>";
+// 				if ($(this).find("gender").text() == "m") {
+// 					$("#finishers_m").append(info);
+// 				} else if ($(this).find("gender").text() == "f") {
+// 					$("#finishers_f").append(info);
+// 				}
+
+// 				$("#finishers_all").append(info);
+// 			});
+// 		}
+// 	});
+
+// 	const send = function () {
+// 		xhr.open("GET", "../xml/finishers.xml");
+// 		xhr.send();
+// 	};
+
+// 	send();
+// };
+
+// $('#addRunner').submit(function () {
+// 	let data = $("#addRunner :input").serializeArray();
+// 	console.log(data);
+
+// 	$.post($("#addRunner").attr("action"), data, function (json) {
+// 		if (json.status == "fail") {
+// 			alert(json.message);
+// 		}
+
+// 		if (json.status == "success") {
+// 			alert(json.message);
+// 			fn_clearInputs();
+// 		}
+// 	}, "json");
+
+// 	return false;
+// });
+
+/*
+const getHen = () =>
+new Promise((resolve, reject) => {
+	setTimeout(() => resolve('A'), 1000);
+});
+
+const getEgg = hen =>
+new Promise((resolve, reject) => {
+	setTimeout(() => resolve(`${hen} => B`), 1000);
+});
+
+const cook = egg =>
+new Promise((resolve, reject) => {
+	setTimeout(() => resolve(`${egg} => C`), 1000);
+});
+
+getHen()
+.then(hen => getEgg(hen))
+.then(egg => cook(egg))
+.then(meal => console.log(meal));
+*/
+
+/*
+const promise = new Promise(function (resolve, reject) {
+		resolve('a');
+	});
+
+	promise.then(function (str) {
+		console.log(str);
+	});
+*/
