@@ -1,10 +1,5 @@
 'use strict';
 
-document.body.style.margin = 0;
-document.body.style.width = '100vw';
-document.body.style.height = '100vh';
-document.body.style.backgroundColor = '#252525';
-
 // The JavaScript Array class is a global object that is used in the construction of arrays; which are high-level, list-like objects.
 // 자바스크립트 배열 클래스는 배열을 구성할때 사용하는 전역객체이다. 상위레벨의 리스트형태의 객체이다.
 
@@ -103,13 +98,6 @@ document.body.style.backgroundColor = '#252525';
 	newLine('slice');
 	const newFruits = fruits.slice();
 	console.log(newFruits);
-
-
-
-
-
-
-
 
 
 	// sort
