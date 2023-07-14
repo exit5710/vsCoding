@@ -90,6 +90,7 @@
 	newLine('splice');
 	fruits.splice(fruits.indexOf('Mango'), 1); // Mango remove(element)
 	fruits.push('Grape', 'Kiwi', 'Lemon');
+	console.log(fruits);
 	fruits.splice(3, 2); // Kiwi, Lemon removes(elements)
 	console.log(fruits);
 
