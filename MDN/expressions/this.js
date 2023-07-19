@@ -14,7 +14,7 @@ someOne.fn();
 
 // 버튼을 클릭하여 soneOne.fn이 호출되었기 때문에 this는 버튼이 된다. (버튼의 value값인 5710 출력)
 let btn = document.getElementById('btn');
-btn.style.cursor = "pointer";
+btn.style.cursor = 'pointer';
 btn.addEventListener('click', someOne.fn);
 
 // calculator
@@ -30,7 +30,7 @@ let calculator = {
 	},
 	mul: function () {
 		return this.a * this.b;
-	}
+	},
 };
 
 calculator.read();
