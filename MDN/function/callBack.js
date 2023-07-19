@@ -40,7 +40,8 @@
 {
 	console.log('---------------------------------------------------------------------');
 	// getUserInput함수에서 callBack(clientData.setUserName)을 호출하지만 setUserName에서는 this가 undefined가 되어 fullName에 Barack Obama를 세팅하지 못한다.
-	// this는 호출하는 방법에 의해 결정되는데 함수에서 호출되기 때문에 undefined가 되는듯 하다.
+	// function안의 this는 undefined // -ex1, 엄격모드가 아니라면 window객체가 된다.
+	// this는 호출하는 방법에 의해 결정되는데 함수에서 호출되기 때문에 undefined가된다.
 
 	let clientData = {
 		id: '094545',
@@ -63,6 +64,15 @@
 
 	console.log(clientData.fullName);
 	// console.log(window.fullName);
+
+	// ex1
+	let test = function () {
+		let age = 20;
+
+		console.log('this : ' + this);
+	};
+
+	test();
 }
 
 {
