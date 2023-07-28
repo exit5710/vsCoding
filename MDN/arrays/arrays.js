@@ -16,7 +16,6 @@
 // In general, these are convenient characteristics; but if these features are not desirable for your particular use, you might consider using typed arrays.
 // 일반적으로, 편리한 특성이지만, 이러한 특징이 특정용도에 적합히지 않다면, typed arrays 사용을 고려할수 있다.
 
-
 // Arrays cannot use strings as element indexes (as in an associative array) but must use integers.
 // 배열은 문자열을 요소 인덱스로 사용할수 없고 정수형으로 사용해야 한다.
 
@@ -37,11 +36,9 @@
 	const fruits = ['Apple', 'Banana'];
 	console.log('fruits length : ' + fruits.length); // console.log(`fruits length : ${fruits.length}`);
 
-
 	// Access an Array item using the index position
-	const fruit = fruits[0];
+	let fruit = fruits[0];
 	console.log('fruit 0 index : ' + fruit);
-
 
 	// Loop over an Array
 	// forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void;
@@ -54,12 +51,10 @@
 	});
 	// fruits.forEach((item, index) => console.log(item, index));
 
-
 	// Add an item to the end of an Array
 	newLine('push');
 	fruits.push('Orange');
 	console.log('fruits push element : ' + fruits[fruits.length - 1]);
-
 
 	// Remove an item from the end of an Array
 	newLine('pop');
@@ -67,39 +62,69 @@
 	console.log('remove end elememnt : ' + removeEndElement);
 	console.log('end element : ' + fruits[fruits.length - 1]);
 
-
 	// Remove an item from the beginning of an Array
 	newLine('shift');
 	const removeFirstElement = fruits.shift();
 	console.log('remove first element : ' + removeFirstElement);
-
 
 	// Add an item to the beginning of an Array
 	newLine('unshift');
 	fruits.unshift('Strawberry');
 	console.log('first element : ' + fruits[0]);
 
-
 	// Find the index of an item in the Array
 	newLine('indexOf');
 	fruits.push('Mango');
+	console.log(fruits);
 	console.log('Mango index : ' + fruits.indexOf('Mango'));
-
 
 	// Remove an item by index position
 	newLine('splice');
-	fruits.splice(fruits.indexOf('Mango'), 1); // Mango remove(element)
+	let removed = fruits.splice(fruits.indexOf('Mango'), 1); // Mango remove(element) Mango부터 1개 엘리멘트를 삭제
+	console.log(removed);
+	console.log(fruits);
+
 	fruits.push('Grape', 'Kiwi', 'Lemon');
 	console.log(fruits);
+
 	fruits.splice(3, 2); // Kiwi, Lemon removes(elements)
 	console.log(fruits);
 
+	fruits.splice(2, 0, 'Lemon');
+	console.log(fruits);
+
+	fruits.splice(-2, 0, 'Kiwi');
+	console.log(fruits);
 
 	// Copy an Array
 	newLine('slice');
-	const newFruits = fruits.slice();
+	let newFruits = fruits.slice();
 	console.log(newFruits);
 
+	newFruits = fruits.slice(1, 4);
+	console.log(newFruits);
+
+	newFruits = fruits.slice(-3, -1);
+	console.log(newFruits);
+
+	// merge two or more arrays. returns a new array.
+	newLine('concat');
+	newFruits = newFruits.concat(['Apple', 'Banana'], 'Cherry');
+	console.log(newFruits);
+
+	newLine('find');
+	const languageSubject = [
+		{ name: 'Java', grade: 'A' },
+		{ name: 'React', grade: 'B' },
+		{ name: 'Node', grade: 'C' },
+		{ name: 'C', grade: 'D' },
+	];
+
+	let java = languageSubject.find(function (elememnt) {
+		return elememnt.name == 'Java';
+	});
+
+	console.log(java);
 
 	// sort
 	newLine('sort');
