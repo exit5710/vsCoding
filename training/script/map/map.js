@@ -8,41 +8,17 @@ Calls a defined callback function on each element of an array, and returns an ar
 
 @param thisArg — An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
 */
+{
+	fn_newLine('map start');
 
-console.log("map start");
+	let numbers = ['1', '2', '3'];
 
-let numbers = ["1", "2", "3"];
+	let fn_print = function (elemnt) {
+		console.log(elemnt);
 
-let languagePrint = function (elemnt) {
-	console.log(elemnt);
+		return elemnt.length;
+	};
 
-	return elemnt;
-};
-
-let tt = numbers.map(languagePrint);
-console.log(tt);
-
-
-/*
-
-let returnValue = languageSubject.filter(function (element, index, array) {
-	return element.name === "Java";
-});
-
-console.log(returnValue);
-
-let isBigEnough = function (element, index) {
-	let thisLength = this.length;
-
-	if (index < thisLength) {
-		console.log(this[index].grade);
-	}
-
-	return element >= 10;
-};
-
-let number = [12, 5, 8, 130, 44];
-let filtered = number.filter(isBigEnough, returnValue); // returnValue는 isBigEnough의 this이다.
-
-console.log(filtered);
-*/
+	let result = numbers.map(fn_print);
+	console.log(result);
+}
