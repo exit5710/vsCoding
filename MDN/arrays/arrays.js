@@ -28,10 +28,7 @@
 // 배열 객체 속성과 배열 요소의 목록은 분리되어야 하며, 배열의 탐색 및 변형 작업은 개체 속성에 적용할수 없다.
 
 {
-	const newLine = function (str) {
-		console.log('\n--- ' + str + ' ----------------------------------------');
-	};
-
+	fn_newLine('arrays');
 	// Create an Array
 	const fruits = ['Apple', 'Banana'];
 	console.log('fruits length : ' + fruits.length); // console.log(`fruits length : ${fruits.length}`);
@@ -45,41 +42,41 @@
 	// value : T (요소(element) : 타입(type))
 	// what is 'thisArg?'? // thisArg는 this
 	// void (리턴 없음)
-	newLine('forEach');
-	fruits.forEach(function (item, index) {
-		console.log(index + ' index', 'fruit : ' + item);
+	fn_newLine('forEach');
+	fruits.forEach(function (element, index) {
+		console.log(index + ' index', 'fruit : ' + element);
 	});
 	// fruits.forEach((item, index) => console.log(item, index));
 
 	// Add an item to the end of an Array
-	newLine('push');
+	fn_newLine('push');
 	fruits.push('Orange');
 	console.log('fruits push element : ' + fruits[fruits.length - 1]);
 
 	// Remove an item from the end of an Array
-	newLine('pop');
+	fn_newLine('pop');
 	const removeEndElement = fruits.pop();
 	console.log('remove end elememnt : ' + removeEndElement);
 	console.log('end element : ' + fruits[fruits.length - 1]);
 
 	// Remove an item from the beginning of an Array
-	newLine('shift');
+	fn_newLine('shift');
 	const removeFirstElement = fruits.shift();
 	console.log('remove first element : ' + removeFirstElement);
 
 	// Add an item to the beginning of an Array
-	newLine('unshift');
+	fn_newLine('unshift');
 	fruits.unshift('Strawberry');
 	console.log('first element : ' + fruits[0]);
 
 	// Find the index of an item in the Array
-	newLine('indexOf');
+	fn_newLine('indexOf');
 	fruits.push('Mango');
 	console.log(fruits);
 	console.log('Mango index : ' + fruits.indexOf('Mango'));
 
 	// Remove an item by index position
-	newLine('splice');
+	fn_newLine('splice');
 	let removed = fruits.splice(fruits.indexOf('Mango'), 1); // Mango remove(element) Mango부터 1개 엘리멘트를 삭제
 	console.log(removed);
 	console.log(fruits);
@@ -97,7 +94,7 @@
 	console.log(fruits);
 
 	// Copy an Array
-	newLine('slice');
+	fn_newLine('slice');
 	let newFruits = fruits.slice();
 	console.log(newFruits);
 
@@ -108,11 +105,11 @@
 	console.log(newFruits);
 
 	// merge two or more arrays. returns a new array.
-	newLine('concat');
+	fn_newLine('concat');
 	newFruits = newFruits.concat(['Apple', 'Banana'], 'Cherry');
 	console.log(newFruits);
 
-	newLine('find');
+	fn_newLine('find');
 	const languageSubject = [
 		{ name: 'Java', grade: 'A' },
 		{ name: 'React', grade: 'B' },
@@ -127,11 +124,70 @@
 	console.log(java);
 
 	// sort
-	newLine('sort');
+	fn_newLine('sort');
 	const numbers = [20, 5, 9, 2, 3, 6, 10, 4, 1, 8, 7];
 	const sortFunc = function (a, b) {
 		//console.log('a : ' + a, 'b : ' + b);
 		return a - b;
 	};
-	console.log(numbers.sort(sortFunc));
+	numbers.sort(sortFunc);
+	console.log(numbers);
+
+	numbers.reverse();
+	console.log(numbers);
+
+	newFruits.sort(function (a, b) {
+		return a.localeCompare(b);
+	});
+	console.log(newFruits);
+
+	[1, -2, 15].sort(function (a, b) {
+		console.log(a + ' <> ' + b);
+		return a - b;
+	});
+
+	// join
+	fn_newLine('join');
+	let fruitStr = newFruits.join(';');
+	console.log(fruitStr);
+
+	// split
+	fn_newLine('split');
+	console.log(fruitStr.split(';'));
+
+	// reducd
+	fn_newLine('reducd');
+	let result = numbers.reduce(function (value, elememnt) {
+		return value + elememnt;
+	}, 0);
+
+	console.log(result);
+
+	// Array.isArray
+	fn_newLine('isArray');
+	console.log(Array.isArray({ temp: '1' }));
+	console.log(Array.isArray(numbers));
+
+	// thisArg
+	fn_newLine('thisArg');
+	let army = {
+		minAge: 18,
+		maxAge: 27,
+		canJoin(user) {
+			return user.age >= this.minAge && user.age < this.maxAge;
+		},
+	};
+
+	let users = [
+		{ name: 'tom', age: 16 },
+		{ name: 'jim', age: 20 },
+		{ name: 'kelin', age: 23 },
+		{ name: 'hawerd', age: 30 },
+	];
+
+	let soldiers = users.filter(army.canJoin, army);
+
+	soldiers.forEach(function (elememnt, index) {
+		console.log(index, elememnt);
+	});
 }
