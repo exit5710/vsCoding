@@ -190,4 +190,51 @@
 	soldiers.forEach(function (elememnt, index) {
 		console.log(index, elememnt);
 	});
+
+	// fn_camelize
+	fn_newLine('fn_camelize');
+	const fn_camelize = function (str) {
+		return str
+			.split('-')
+			.map(function (elememnt, index) {
+				if (index !== 0) {
+					elememnt = elememnt[0].toUpperCase() + elememnt.slice(1);
+				}
+
+				return elememnt;
+			})
+			.join('');
+	};
+
+	console.log(fn_camelize('list-style-image'));
+
+	// filterRangeInPlace
+	fn_newLine('fn_filterRangeInPlace');
+
+	const fn_filterRangeInPlace = function (array, a, b) {
+		for (let i = array.length - 1; i >= 0; i--) {
+			let value = array[i];
+
+			if (value >= a && value <= b) {
+				array.splice(i, 1);
+			}
+		}
+	};
+
+	fn_filterRangeInPlace(numbers, 5, 20);
+	console.log(numbers);
+
+	fn_newLine('iterable');
+	let arrayLike = {
+		// 인덱스와 length프로퍼티가 있음 => 유사 배열
+		0: 'Hello',
+		1: 'World',
+		length: 2,
+	};
+
+	let fromArray = Array.from(arrayLike);
+
+	for (let element of fromArray) {
+		console.log(element);
+	}
 }
