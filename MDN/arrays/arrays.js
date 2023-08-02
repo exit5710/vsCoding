@@ -151,13 +151,24 @@
 	let fruitStr = newFruits.join(';');
 	console.log(fruitStr);
 
+	// map
+	fn_newLine('map');
+	let fn_print = function (elemnt) {
+		//console.log(elemnt);
+
+		return elemnt.toString().length;
+	};
+
+	let result = numbers.map(fn_print);
+	console.log(result);
+
 	// split
 	fn_newLine('split');
 	console.log(fruitStr.split(';'));
 
 	// reducd
 	fn_newLine('reducd');
-	let result = numbers.reduce(function (value, elememnt) {
+	result = numbers.reduce(function (value, elememnt) {
 		return value + elememnt;
 	}, 0);
 
