@@ -1,5 +1,11 @@
 'use strict';
 
+let fn_btn = function () {
+	// 버튼을 클릭하여 soneOne.fn이 호출되었기 때문에 this는 버튼이 된다. (버튼의 value값인 5710 출력)
+	let btn = document.getElementById('btn');
+	btn.addEventListener('click', someOne.fn);
+};
+
 // this는 호출하는 방법에 의해 결정, 호출한놈(객체) === this
 
 // someOne에 의해 호출되었기 때문에 this는 someOne이 된다. 때문에 name, value(001), fn의값이 출력된다.
@@ -13,9 +19,9 @@ let someOne = {
 someOne.fn();
 
 // 버튼을 클릭하여 soneOne.fn이 호출되었기 때문에 this는 버튼이 된다. (버튼의 value값인 5710 출력)
-let btn = document.getElementById('btn');
-btn.style.cursor = 'pointer';
-btn.addEventListener('click', someOne.fn);
+//let btn = document.getElementById('btn');
+//btn.style.cursor = 'pointer';
+//btn.addEventListener('click', someOne.fn);
 
 // calculator
 let calculator = {
