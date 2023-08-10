@@ -1,46 +1,49 @@
 'use strict';
 
-console.log('filter start');
+{
+	fn_newLine('filter');
 
-let languageSubject = [
-	{ name: 'Java', grade: 'A' },
-	{ name: 'React', grade: 'B' },
-	{ name: 'Node', grade: 'C' },
-	{ name: 'C', grade: 'D' },
-	{ name: 'Java', grade: 'E' },
-	{ name: 'script', grade: 'F' },
-];
+	let languageSubject = [
+		{ name: 'Java', grade: 'A' },
+		{ name: 'React', grade: 'B' },
+		{ name: 'Node', grade: 'C' },
+		{ name: 'C', grade: 'D' },
+		{ name: 'Java', grade: 'E' },
+		{ name: 'script', grade: 'F' },
+	];
 
-let returnValue = languageSubject.filter(function (element, index, array) {
-	return element.name === 'Java';
-});
+	let returnValue = languageSubject.filter(function (element, index, array) {
+		return element.name === 'Java';
+	});
 
-console.log(returnValue);
-console.log('\n');
+	console.log(returnValue);
+	console.log('\n');
 
-let number = [12, 5, 8, 130, 44];
+	let number = [12, 5, 8, 130, 44];
 
-let isBigEnough = function (element, index) {
-	let thisLength = this.length;
+	let isBigEnough = function (element, index) {
+		let thisLength = this.length;
 
-	if (index < thisLength) {
-		console.log(this[index].grade);
-	}
+		if (index < thisLength) {
+			console.log('grade : ' + this[index].grade);
+		}
 
-	return element >= 10;
-};
+		return element >= 10;
+	};
 
-let filtered = number.filter(isBigEnough, returnValue); // returnValue는 isBigEnough의 this이다.
-/*
-let filtered = number.filter(function (element, index) {
-	let thisLength = this.length;
+	let filtered = number.filter(isBigEnough, returnValue); // returnValue는 isBigEnough의 this이다.
 
-	if (index < thisLength) {
-		console.log(this[index].grade);
-	}
+	/*
+	let filtered = number.filter(function (element, index) {
+		let thisLength = this.length;
 
-	return element >= 10;
-}, returnValue); // returnValue는 isBigEnough의 this이다.
-*/
+		if (index < thisLength) {
+			console.log(this[index].grade);
+		}
 
-console.log(filtered);
+		return element >= 10;
+	}, returnValue); // returnValue는 isBigEnough의 this이다.
+	*/
+
+	console.log(filtered);
+}
