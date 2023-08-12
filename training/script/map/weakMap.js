@@ -1,7 +1,7 @@
 'use strict';
 
 {
-	fn_newLine('WeakMap');
+	fn_newLine('weakMap');
 	let john = { name: 'John', age: 23 };
 	let array = [john];
 
