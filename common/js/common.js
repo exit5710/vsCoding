@@ -10,3 +10,7 @@ const fn_init = function () {
 const fn_newLine = function (str) {
 	console.log('\n--- ' + str + ' ----------------------------------------');
 };
+
+const fn_addZero = function (number, addNumber = 2) {
+	return number.toString().padStart(addNumber, '0');
+};
