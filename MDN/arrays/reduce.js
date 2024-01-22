@@ -2,7 +2,7 @@
 
 // The reduce() method of Array instances executes a user-supplied "reducer" callback function on each element of the array, in order,
 // passing in the return value from the calculation on the preceding element.
-//
+// 배열 인스턴스의 reduce 메소드는    실행한다 사용자 제공 "reducer" 콜백 함수      배열의 각 요소를
 
 // The final result of running the reducer across all elements of the array is a single value.
 //
@@ -19,12 +19,12 @@
 	fn_newLine('reduce');
 
 	// https://5kdk.tistory.com/2
-	const numbers = [1, 2, 3, 4, 7];
+	const numbers = [1, 2, 3, 5, 9];
 
 	let fn_addNumbers = function (obj) {
 		if (Array.isArray(obj)) {
-			return obj.reduce(function (accumulator, currentValue, index, array) {
-				console.log(accumulator, currentValue, index, array);
+			return obj.reduce(function (accumulator, currentValue, index) {
+				console.log(accumulator, currentValue, index);
 
 				return accumulator + currentValue;
 			}, 0);
