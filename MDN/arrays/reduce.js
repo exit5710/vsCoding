@@ -8,7 +8,7 @@
 // 배열의 모든 요소에 실행한 최종 결과는 단일 값이다.
 
 // The first time that the callback is run there is no "return value of the previous calculation". If supplied, an initial value may be used in its place.
-//
+// 콜백이 처음 실행되면 "이전 계산의 리턴값"은 없다.
 
 // Otherwise the array element at index 0 is used as the initial value and iteration starts from the next element (index 1 instead of index 0).
 //
@@ -16,7 +16,7 @@
 {
 	// https://ko.javascript.info/array-methods
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
-	fn_newLine('reduce');
+	fn_newLine('array reduce');
 
 	// https://5kdk.tistory.com/2
 	const numbers = [1, 2, 3, 5, 9];
