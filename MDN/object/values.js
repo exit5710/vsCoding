@@ -42,8 +42,8 @@
 	const anything = {
 		a: 'something',
 		b: 42,
-		c: false,
-		d: [1, 2, 3, 'apple'],
+		c: [1, 2, 3, 'apple'],
+		d: { name: 'jim' },
 		sales: [
 			{ name: 'John', salary: 1000 },
 			{ name: 'Alice', salary: 1600 },
@@ -51,35 +51,34 @@
 	};
 
 	// 문자열-키 속성값을 배열로 리턴
-	console.log(Object.values(anything)); // ['something', 42, false, [1, 2, 3, 'apple'], [{ name: 'John', salary: 1000 },	{ name: 'Alice', salary: 1600 }]]
+	console.log(Object.values(anything)); // ['something', 42, [1, 2, 3, 'apple'], {name: 'jim'}, [{ name: 'John', salary: 1000 }, { name: 'Alice', salary: 1600 }]]
 	console.log('isArray : ', Array.isArray(Object.values(anything)));
 
-	console.log('\n');
+	console.log('\n-- for of');
 	// 배열의 값을 for문을 사용해 출력 (in을 사용시 배열의 index를 출력)
 	for (let value of Object.values(anything)) {
 		console.log(value);
 	}
 
-	console.log('\n');
+	console.log('\n-- for in');
 	// 오브젝트의 key와 value를 출력
 	for (let key in anything) {
 		console.log(key, ' : ', anything[key]);
 	}
 
-	console.log('\n');
+	// https://ko.javascript.info/keys-values-entries
+	console.log('\n-- Object entries');
 	Object.entries(anything).forEach(function ([key, value]) {
 		console.log(key, ' : ', value);
 	});
 
-	console.log('\n');
+	console.log('\n-- Object keys');
 	Object.keys(anything).forEach(function (element) {
 		console.log(element);
 	});
 
-	console.log('\n');
+	console.log('\n-- Object values');
 	Object.values(anything).forEach(function (element) {
 		console.log(element);
 	});
-
-	// https://ko.javascript.info/keys-values-entries
 }
