@@ -4,13 +4,13 @@
 	// https://ko.javascript.info/recursion
 	fn_newLine('recursion');
 
-	function fn_power(x, n) {
+	let fn_power = function (x, n) {
 		if (n == 1) {
 			return x;
 		} else {
 			return x * fn_power(x, n - 1);
 		}
-	}
+	};
 
 	// return 2 * fn_power(2, 2)  (2 * 4)
 	// return 2 * fn_power(2, 1)  (2 * 2)
@@ -33,9 +33,14 @@
 		},
 	};
 
+	console.log(Object.values(company));
+
 	let fn_sumSalaries = function (department) {
 		if (Array.isArray(department)) {
-			return department.reduce((accumulator, currentValue) => accumulator + currentValue.salary, 0); // 배열의 요소를 합함
+			//return department.reduce((accumulator, currentValue) => accumulator + currentValue.salary, 0); // 배열의 요소를 합함
+			return department.reduce(function (accumulator, currentValue) {
+				return accumulator + currentValue.salary;
+			}, 0);
 		} else {
 			let sum = 0;
 
