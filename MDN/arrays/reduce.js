@@ -31,5 +31,26 @@
 		}
 	};
 
-	console.log(fn_addNumbers(numbers));
+	console.log('number sum :', fn_addNumbers(numbers));
+
+	console.log('\n');
+	let company = {
+		sales: [
+			{ name: 'John', salary: 1000 },
+			{ name: 'Alice', salary: 1600 },
+		],
+		development: {
+			sites: [
+				{ name: 'Peter', salary: 2000 },
+				{ name: 'Alex', salary: 1800 },
+			],
+			internals: [{ name: 'Jack', salary: 1300 }],
+		},
+	};
+
+	// sales, development 두개의 배열
+	let companyArr = Object.values(company);
+	console.log('companyArr is array :', Array.isArray(companyArr), '/ size: ', companyArr.length);
+
+	console.log(companyArr);
 }
