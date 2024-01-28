@@ -52,6 +52,9 @@
 		}
 	};
 
+	console.log(fn_sumSalaries(company));
+
+	// reduce.js
 	// company는 오브젝트이기때문에 최초 if문의 Array.isArray는 false.
 	// else : sum = 0
 	// for...of : 0 fn_sumSalaries [{ name: 'John', salary: 1000 }, { name: 'Alice', salary: 1600 }]
@@ -82,8 +85,6 @@
 	};
 
 	//console.log(fn_test(test));
-
-	console.log(fn_sumSalaries(company));
 
 	//console.log('isObject : ', Object.values(company)[1] instanceof Object);
 	//console.log('isArray : ', Array.isArray(Object.values(company)[1]));
