@@ -12,7 +12,6 @@
 
 // Otherwise the array element at index 0 is used as the initial value and iteration starts from the next element (index 1 instead of index 0).
 //
-
 {
 	// https://ko.javascript.info/array-methods
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
@@ -35,12 +34,10 @@
 
 	console.log('\n');
 	let company = {
-		/*
 		sales: [
 			{ name: 'John', salary: 1000 },
 			{ name: 'Alice', salary: 1600 },
 		],
-		*/
 		development: {
 			sites: [
 				{ name: 'Peter', salary: 2000 },
@@ -49,14 +46,6 @@
 			internals: [{ name: 'Jack', salary: 1300 }],
 		},
 	};
-
-	// sales, development 두개의 배열
-	let companyArr = Object.values(company);
-	console.log('companyArr is array :', Array.isArray(companyArr), '/ size: ', companyArr.length);
-	console.log('object :', companyArr[0]);
-
-	//let companyArr2 = Object.values(companyArr[0]);
-	//console.log(companyArr2[0]);
 
 	console.log('\n--- fn_sumSalary');
 	let fn_sumSalary = function (obj) {
@@ -71,21 +60,37 @@
 			// 배열이 아니라면 배열로 만들어 재귀호출한다.
 			let array = Object.values(obj);
 			for (let element of array) {
-				sum = fn_sumSalary(element);
+				sum += fn_sumSalary(element);
 			}
 
 			return sum;
 		}
 	};
 
+	// sales, development 두개의 배열
+	// sales = [[{ name: 'John', salary: 1000 }, { name: 'Alice', salary: 1600 }]];
+	// development = [{sites...}, {internals...}]
+	console.log('development is array :', Array.isArray(Object.values(company)), '/ size: ', Object.values(company).length);
+	console.log(Object.values(company)[0], Object.values(company)[1]);
+
 	console.log(fn_sumSalary(company));
 	// company는 오브젝트. if(isArray)는 false
 	// Object.values로 배열로 변경(length: 2) 0번째는 배열, 1번째는 오브젝트
-	//   배열을 파라메터로 재귀호출(fn_sumSalary)한다.
-	//   [0]은 배열. if(isArray)는 true [{ name: 'John', salary: 1000 }, { name: 'Alice', salary: 1600 }]
+	// 변경된 배열을 파라메터로 for문으로 재귀호출(fn_sumSalary)한다.
+
+	// for 1
+	//   0번째 배열은 배열(length 2). if(isArray)는 true [{ name: 'John', salary: 1000 }, { name: 'Alice', salary: 1600 }]
 	//   reduce로 0번째 배열의 salary값을 누적 합산을 리턴한다.(2600)
 	//
-	//   [1]은 오브젝트. if(isArray)는 false {sites..., internals...}
-	//   Object.values로 배열로 변경(length: 1) 오브젝트
-	//     배열을 파라메터로 재귀호출(fn_sumSalary)한다.
+	// for 2
+	//   1번째 배열은 2개의 오브젝트. if(isArray)는 false {sites...}, {internals...}
+	//   Object.values로 배열로 변경(length: 1)
+	//     변경된 배열을 파라메터로 for문으로 재귀호출(fn_sumSalary)한다.
+	//
+	//     for 1
+	//       0번째 배열은 배열 [{ name: 'Peter', salary: 2000 }, { name: 'Alex', salary: 1800 }]
+	//       reduce로 배열의 salary값을 누적 합산을 리턴한다.(3800)
+	//     for 2
+	//       1번째 배열은 배열 [{ name: 'Jack', salary: 1300 }]
+	//       reduce로 배열의 salary값을 누적 합산을 리턴한다.(1300)
 }
