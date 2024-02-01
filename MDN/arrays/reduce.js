@@ -8,7 +8,7 @@
 // 배열의 모든 요소에 실행한 최종 결과는 단일 값이다.
 
 // The first time that the callback is run there is no "return value of the previous calculation". If supplied, an initial value may be used in its place.
-// 콜백이 처음 실행되면 "이전 계산의 리턴값"은 없다.
+// 콜백이 처음 실행되면 "이전 계산의 리턴값"은 없다. 초기값을 대신 사용할수 있음.
 
 // Otherwise the array element at index 0 is used as the initial value and iteration starts from the next element (index 1 instead of index 0).
 //
