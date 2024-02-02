@@ -11,7 +11,7 @@
 // 콜백이 처음 실행되면 "이전 계산의 리턴값"은 없다. 초기값을 대신 사용할수 있음.
 
 // Otherwise the array element at index 0 is used as the initial value and iteration starts from the next element (index 1 instead of index 0).
-//
+// 그렇지 않으면, 인덱스 0의 배열 요소가 초기값으로 사용하고 다음 요소부터 반복이 시작(인덱스0 대신 인덱스1)
 {
 	// https://ko.javascript.info/array-methods
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
