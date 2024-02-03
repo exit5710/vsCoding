@@ -33,8 +33,6 @@
 		},
 	};
 
-	console.log(Object.values(company));
-
 	let fn_sumSalaries = function (department) {
 		if (Array.isArray(department)) {
 			//return department.reduce((accumulator, currentValue) => accumulator + currentValue.salary, 0); // 배열의 요소를 합함
@@ -72,21 +70,4 @@
 	//
 	// 두번째 if문은 파라미터가 배열이기 때문에 true [{ name: 'John', salary: 1000 }, { name: 'Alice', salary: 1600 }]
 	// 초깃값 0에 값의 salary를 누적합계(2600)를 리턴, sum = 2600
-
-	let test = [
-		{ name: 'John', salary: 1000 },
-		{ name: 'Alice', salary: 1600 },
-	];
-
-	let fn_test = function (element) {
-		return element.reduce(function (accumulator, currentValue, currentIndex, array) {
-			return accumulator + currentValue.salary;
-		}, 0);
-	};
-
-	//console.log(fn_test(test));
-
-	//console.log('isObject : ', Object.values(company)[1] instanceof Object);
-	//console.log('isArray : ', Array.isArray(Object.values(company)[1]));
-	// console.log(Object.values(company)[1]);
 }
