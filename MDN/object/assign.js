@@ -17,9 +17,24 @@
 	};
 
 	let admin = user;
+	admin.name = 'peter';
 
-	user.name = 'peter';
+	console.log('user :', user);
+	console.log('admin :', admin);
 
-	console.log(user);
-	console.log(admin);
+	let clone = {};
+
+	for (let key in user) {
+		clone[key] = user[key];
+	}
+
+	clone.name = 'jone';
+	console.log('clone :', clone);
+
+	let hobby = {
+		hobby: 'computer',
+	};
+
+	Object.assign(user, hobby);
+	console.log('user :', user);
 }
