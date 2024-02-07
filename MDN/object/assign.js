@@ -13,8 +13,14 @@
 	let user = {
 		name: 'jim',
 		age: 31,
+		sizes: {
+			height: 176,
+			width: 65,
+		},
 		etc: undefined,
 	};
+
+	console.log('user :', user);
 
 	let admin = user;
 	admin.name = 'peter';
@@ -37,4 +43,9 @@
 
 	Object.assign(user, hobby);
 	console.log('user :', user);
+
+	let twin = Object.assign({}, user);
+	user.age = 32;
+	console.log('user :', user);
+	console.log('twin :', twin);
 }
