@@ -34,4 +34,8 @@
 	console.log(...str);
 	console.log(Array.from(str));
 	console.log(Array.isArray(Array.from(str)));
+
+	let arr = [1, 2, 3];
+	let arryCopy = [...arr];
+	console.log(arryCopy);
 }
