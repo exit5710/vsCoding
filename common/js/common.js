@@ -14,3 +14,7 @@ const fn_newLine = function (str) {
 const fn_addZero = function (number, addNumber = 2) {
 	return number.toString().padStart(addNumber, '0');
 };
+
+const fn_terminated = function () {
+	throw new Error('Program terminated');
+};
