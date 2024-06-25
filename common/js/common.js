@@ -7,8 +7,12 @@ const fn_init = function () {
 	document.body.style.backgroundColor = '#202124';
 };
 
-const fn_newLine = function (str) {
-	console.log('\n--- ' + str + ' ----------------------------------------');
+const fn_newLine = function (...args) {
+	if (args.length == 0) {
+		console.log('\n');
+	} else {
+		console.log('\n--- ' + args + ' ----------------------------------------');
+	}
 };
 
 const fn_addZero = function (number, addNumber = 2) {
