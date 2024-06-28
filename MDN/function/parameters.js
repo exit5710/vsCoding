@@ -31,13 +31,31 @@
 	console.log(merge);
 
 	let str = 'Hello';
+	console.log('str: ', str);
 	console.log('...str: ', ...str);
+	console.log('Array.from: ', [...str]);
 	console.log('Array.from: ', Array.from(str));
 	console.log('isArray: ', Array.isArray(Array.from(str)));
 
 	let arr = [1, 2, 3];
 	let arryCopy = [...arr];
+	console.log(arr);
+	console.log(...arr);
 	console.log(arryCopy);
+
+	console.log(JSON.stringify(arr) === JSON.stringify(arryCopy));
+	console.log(arr === arryCopy);
+
+	fn_newLine();
+
+	let obj = { a: 1, b: 2, c: 3 };
+	let objCopy = { ...obj };
+
+	console.log(obj);
+	console.log(objCopy);
+
+	console.log(JSON.stringify(obj) === JSON.stringify(objCopy));
+	console.log(obj === objCopy);
 
 	//fn_terminated();
 }
