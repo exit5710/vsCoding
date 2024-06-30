@@ -13,9 +13,12 @@
 	};
 
 	let counter = makeCount();
+
 	console.log(counter());
 	console.log(counter());
 	console.log(counter());
+
+	fn_newLine();
 
 	let phrase = 'hello';
 
@@ -24,6 +27,8 @@
 	}
 
 	say('tom');
+
+	fn_newLine();
 
 	//fn_terminated();
 }
