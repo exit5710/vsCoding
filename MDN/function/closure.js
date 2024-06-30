@@ -30,5 +30,15 @@
 
 	fn_newLine();
 
+	function f() {
+		let value = 123;
+
+		return function () {
+			alert(value);
+		};
+	}
+
+	let g = f();
+
 	//fn_terminated();
 }
