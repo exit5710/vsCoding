@@ -106,6 +106,7 @@
 		{ name: 'Pete', age: 18, surname: 'Peterson' },
 		{ name: 'Ann', age: 19, surname: 'Hathaway' },
 	];
+
 	//users.sort((a, b) => (a.name > b.name ? 1 : -1));
 	/*
 	users.sort(function (a, b) {
@@ -120,7 +121,6 @@
 	};
 
 	users.sort(byField('age'));
-
 	console.log(users);
 
 	//fn_terminated();
