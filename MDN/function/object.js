@@ -2,6 +2,7 @@
 
 {
 	// https://ko.javascript.info/function-object
+	// function object
 	fn_newLine('function object');
 
 	let obj = {
@@ -85,13 +86,56 @@
 			return makeCounter.count++;
 		};
 
+		makeCounter.set = function (value) {
+			makeCounter.count = value;
+		};
+
+		makeCounter.decrease = function () {
+			makeCounter.count--;
+		};
+
 		return counter;
 	};
 
 	let counter = makeCounter();
 
+	makeCounter.set(8);
+	makeCounter.decrease();
+
 	console.log(counter());
 	console.log(counter());
+
+	fn_newLine();
+
+	sayHi = function func(who) {
+		if (who) {
+			console.log(`Hello, ${who}`);
+		} else {
+			func('Guest'); // func를 사용해서 자신을 호출합니다.
+		}
+	};
+
+	sayHi('jim');
+	sayHi();
+
+	fn_newLine();
+
+	function sum(a) {
+		let currentSum = a;
+
+		function f(b) {
+			currentSum += b;
+			return f;
+		}
+
+		f.toString = function () {
+			return currentSum;
+		};
+
+		return f;
+	}
+
+	alert(sum(1)(2)(3)(4)(5));
 
 	//fn_terminated();
 }
