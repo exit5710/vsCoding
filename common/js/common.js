@@ -22,3 +22,34 @@ const fn_addZero = function (number, addNumber = 2) {
 const fn_terminated = function () {
 	throw new Error('Program terminated');
 };
+
+const fn_createCalculator = function (initialValue = 0) {
+	let result = initialValue;
+
+	return {
+		add: function (num) {
+			result += num;
+			return result;
+		},
+		subtract: function (num) {
+			result -= num;
+			return result;
+		},
+		multiply: function (num) {
+			result *= num;
+			return result;
+		},
+		divide: function (num) {
+			result /= num;
+			return result;
+		},
+		getResult: function () {
+			return result;
+		},
+		clear: function () {
+			result = 0;
+			return result;
+		},
+	};
+};
+let calculator = fn_createCalculator();
