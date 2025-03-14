@@ -8,6 +8,7 @@
 
 	let fn_allParams = function (...args) {
 		console.log('isArray: ', Array.isArray(args));
+		console.log(args);
 
 		args.forEach(function (element) {
 			console.log(element);
