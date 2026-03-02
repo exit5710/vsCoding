@@ -101,4 +101,17 @@
 
 	getUserInput('Barack', 'Obama', clientData.setUserName, clientData);
 	console.log(clientData.fullName);
+
+	//
+	function add(a, b, callback) {
+		const result = a + b;
+
+		if (typeof callback === 'function') {
+			callback(result);
+		}
+	}
+
+	add(3, 5, function (sum) {
+		console.log('결과:', sum);
+	});
 }
