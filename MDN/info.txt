@@ -1,0 +1,5 @@
+▶ 메서드와 this
+https://ko.javascript.info/object-methods
+C:/java/script/vsCoding/MDN/function/method.html
+
+▶ 
