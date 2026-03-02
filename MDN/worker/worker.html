@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>MDN web worker</title>
+		<link rel="icon" href="../../common/icon/javascript.ico" />
+		<link type="text/css" rel="stylesheet" href="../../common/css/common.css" />
+		<script type="text/javascript" src="../../common/js/common.js"></script>
+		<script type="text/javascript" src="./worker.js" defer></script>
+		<script type="text/javascript">
+			window.onload = function () {
+				fn_init();
+			};
+		</script>
+	</head>
+
+	<body>
+		<h1></h1>
+		<button id="startWorker1">반복문 1 시작</button>
+		<button id="startWorker2">반복문 2 시작</button>
+
+		<div id="result1"></div>
+		<div id="result2"></div>
+
+		<script>
+			document.getElementById('startWorker1').addEventListener('click', function () {
+				const worker1 = new Worker('worker.js');
+
+				// 워커1에서 메시지 받기
+				worker1.onmessage = function (event) {
+					document.getElementById('result1').textContent = '반복문 1 결과: ' + event.data;
+				};
+
+				// 워커1로 반복문 작업 시작
+				worker1.postMessage({ task: 1 });
+			});
+
+			document.getElementById('startWorker2').addEventListener('click', function () {
+				const worker2 = new Worker('worker.js');
+
+				// 워커2에서 메시지 받기
+				worker2.onmessage = function (event) {
+					document.getElementById('result2').textContent = '반복문 2 결과: ' + event.data;
+				};
+
+				// 워커2로 반복문 작업 시작
+				worker2.postMessage({ task: 2 });
+			});
+		</script>
+	</body>
+</html>
