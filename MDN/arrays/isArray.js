@@ -32,13 +32,21 @@
 		female: [{ name: 'cheery', age: 25 }],
 	};
 
-	console.log(Array.isArray(numbers));
-	console.log(Array.isArray(member));
-	console.log(Array.isArray(members));
-	console.log(Array.isArray(members.male));
-	console.log(Array.isArray(members.female));
+	console.log(Array.isArray(numbers)); //true
+	console.log(Array.isArray(member)); //false
+	console.log(Array.isArray(members)); //false
+	console.log(Array.isArray(members.male)); //true
+	console.log(Array.isArray(members.female)); //true
+
+	members.male.forEach(function (element) {
+		console.log(element);
+	});
+
+	members.female.forEach((element) => {
+		console.log(element);
+	});
 
 	numbers.forEach(function (element) {
-		console.log(element);
+		//console.log(element);
 	});
 }
